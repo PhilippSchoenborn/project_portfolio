@@ -1,0 +1,126 @@
+.data-protection {
+    background-color: rgb(28, 28, 28);
+    padding: 20px;
+}
+
+:host ::ng-deep .data-protection h1 {
+    font-family: 'Karla', sans-serif;
+    color: rgb(61, 207, 182);
+    font-size: 48px;
+    font-weight: 800;
+}
+
+:host ::ng-deep .data-protection h2 {
+    font-family: 'Fira Code', sans-serif;
+    color: rgb(61, 207, 182);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+:host ::ng-deep .data-protection h3 {
+    font-family: 'Fira Code', sans-serif;
+    color: rgb(61, 207, 182);
+    font-size: 16px;
+    font-weight: 200;
+}
+
+:host ::ng-deep .data-protection p {
+    font-family: 'Fira Code', sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+:host ::ng-deep .data-protection li {
+    font-family: 'Fira Code', sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+:host ::ng-deep .data-protection a {
+    font-family: 'Fira Code', sans-serif;
+    color: rgb(61, 207, 182) !important;
+    font-size: 16px;
+    font-weight: 200;
+    word-break: break-word !important;
+    cursor: pointer;
+}
+
+::ng-deep .custom-dialog {
+    border-radius: 0px;
+    background-color: #FFFCF3;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 40px !important;
+        font-weight: 600 !important;
+    }
+
+    h2 {
+        font-size: 24px !important;
+        font-weight: 400 !important;
+    }
+
+    h3 {
+        font-size: 14px !important;
+        font-weight: 200 !important;
+    }
+
+    p {
+        font-size: 14px !important;
+        font-weight: 200 !important;
+    }
+
+    li {
+        font-size: 14px !important;
+        font-weight: 200 !important;
+    }
+
+    a {
+        font-size: 14px !important;
+        font-weight: 200 !important;
+    }
+}
+
+@media (max-width: 545px) {
+    h1 {
+        font-size: 30px !important;
+        font-weight: 400 !important;
+    }
+
+    h2 {
+        font-size: 16px !important;
+        font-weight: 300 !important;
+    }
+
+    h3 {
+        font-size: 12px !important;
+        font-weight: normal !important;
+    }
+
+    p {
+        font-size: 12px !important;
+        font-weight: normal !important;
+    }
+
+    li {
+        font-size: 12px !important;
+        font-weight: normal !important;
+    }
+
+    a {
+        font-size: 12px !important;
+        font-weight: normal !important;
+    }
+}
+
+@media (max-width: 420px) {
+    h1 {
+        font-size: 16px !important;
+        font-weight: 300 !important;
+    }
+}

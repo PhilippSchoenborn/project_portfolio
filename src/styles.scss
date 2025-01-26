@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/assets/fonts/fira_code/FiraCode-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('/assets/fonts/karla/Karla-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('/assets/fonts/karla/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    background-color: black;
+    scroll-behavior: smooth;
+    /* Hide the scrollbar */
+    /* Fully hides the scrollbar (no scrolling possible) */
+    /* For hidden scrollbar but scrollable content: */
+    /* overflow: auto; */
+}
+
+/* If you want to target the scrollbar styling without hiding scrolling (optional): */
+::-webkit-scrollbar {
+    display: none;
+    /* Hides scrollbar in WebKit browsers (Chrome, Safari, Edge) */
+}
+
+::-moz-scrollbar {
+    display: none;
+    /* Hides scrollbar for Firefox */
+}
+
+/* Optional for a consistent experience */
+html {
+    -ms-overflow-style: none;
+    /* Hides scrollbar in Internet Explorer */
+    scrollbar-width: none;
+    /* Hides scrollbar in Firefox */
+}
+
+
+.no-scroll {
+    overflow: hidden;
+}
+
+@media (max-width: 1440px) {
+
+    // body,
+    // html {
+    //     width: 1280px;
+    // }
+}
+
+@media (max-width: 1280px) {
+
+    // body,
+    // html {
+    //     width: 1024px;
+    // }
+}
+
+@media (max-width: 1024px) {
+
+    // body,
+    // html {
+    //     width: 768px;
+    // }
+}
+
+@media (max-width: 768px) {
+
+    // body,
+    // html {
+    //     width: 480px;
+    // }
+}
+
+@media (max-width: 480px) {
+
+    // body,
+    // html {
+    //     width: 360px;
+    // }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,41 @@
+<section id="comments" class="comments-section">
+    <!-- Headline -->
+    <div class="headline">
+        {{ selectedLanguage === 'EN' ? 'What my colleagues say about me' : 'Was meine Kollegen über mich sagen' }}
+    </div>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <div class="testimonial-container">
+            <div class="testimonial-slide" *ngFor="let t of circularSlides; let i = index" [class.active]="i === 1">
+                <!-- Quote -->
+                <div class="quote">
+                    <span class="quote-symbol">“</span>
+                    <p class="quote-text">{{ t.quote[selectedLanguage] }}</p>
+                </div>
+
+                <!-- Author Info -->
+                <div class="author-info">
+                    <hr class="author-line" />
+                    <p class="author">{{ t.author }} - {{ t.role }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arrows and Navigation -->
+    <div class="selection-arrows">
+        <button class="arrow left-arrow" (click)="prevSlide()" aria-label="Previous testimonial">
+            &#10094;
+        </button>
+
+        <div class="dots">
+            <span class="dot" *ngFor="let t of testimonials; let i = index" [class.active]="i === currentIndex"
+                (click)="goToSlide(i)"></span>
+        </div>
+
+        <button class="arrow right-arrow" (click)="nextSlide()" aria-label="Next testimonial">
+            &#10095;
+        </button>
+    </div>
+</section>

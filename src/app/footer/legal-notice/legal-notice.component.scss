@@ -1,0 +1,82 @@
+body {
+    background-color: rgb(28, 28, 28);
+}
+
+.font-karla {
+    font-family: 'Karla', sans-serif;
+}
+
+.social-links.mat-button:hover {
+    background-color: transparent !important; /* Entfernt die Hintergrundfarbe beim Hover */
+    box-shadow: none !important; /* Entfernt den Hover-Schatten */
+    color: inherit !important; /* Beibehaltung der ursprünglichen Schriftfarbe */
+    transition: none !important; /* Verhindert jegliche Animationen */
+  }
+
+.button-legal-notice:hover{
+    background: none !important; /* Kein Hintergrund */
+    border: none !important; /* Keine Rahmen */
+    box-shadow: none !important; /* Keine Box-Schatten */
+}
+
+.social-links-legel-notice {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    height: 20px;
+    letter-spacing: normal !important;
+    padding: 0;
+    padding-left: 6px;
+    background: none !important; /* Kein Hintergrund */
+    border: none !important; /* Keine Rahmen */
+    box-shadow: none !important; /* Keine Box-Schatten */
+
+    &:hover {
+        cursor: pointer;
+        color: rgba(61, 207, 182, 1);
+        background: none !important; /* Entferne Hintergrundfarbe beim Hover */
+        box-shadow: none !important; /* Entferne Box-Schatten */
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        background-color: rgba(61, 207, 182, 1);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.single-button{
+    min-height: 36px !important;
+}
+
+button:hover {
+    color: rgba(61, 207, 182, 1);
+    background: none !important; /* Entferne Hintergrundfarbe beim Hover */
+    box-shadow: none !important; /* Entferne Box-Schatten */
+}
+
+.font-karla {
+    font-family: 'Karla', sans-serif;
+}
+
+.font-fira {
+    font-family: 'Fira Code', sans-serif;
+}

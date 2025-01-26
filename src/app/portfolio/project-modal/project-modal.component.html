@@ -1,0 +1,63 @@
+<div class="modal-backdrop" (click)="onClose()"></div>
+<div class="modal">
+    <div class="modal-content">
+        <!-- Close Button -->
+        <button class="close-btn" (click)="onClose()">X</button>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+            <!-- Left Section -->
+            <div class="modal-left">
+                <!-- Project Number and Title -->
+                <div class="project-number-title">
+                    <span class="project-number">0{{ project.id }}</span>
+                    <h2 class="project-title">{{ project.title }}</h2>
+                </div>
+
+                <!-- Subtitle -->
+                <h3 class="subtitle">{{ project.subtitle[selectedLanguage] }}</h3>
+
+                <!-- Description -->
+                <p class="description">{{ project.description[selectedLanguage] }}</p>
+
+                <!-- Technologies -->
+                <div class="technologies">
+                    <ng-container *ngFor="let tech of project.technologies">
+                        <div class="tech-item">
+                            <!-- Icon for Technology -->
+                            <img [src]="getIconPath(tech)" [alt]="tech" class="tech-icon" />
+                            <!-- Technology Name -->
+                            <span class="tech-name">{{ tech }}</span>
+                        </div>
+                    </ng-container>
+                </div>
+
+                <!-- Links -->
+                <div class="links buttons">
+                    <button class="btn-secondary" (click)="openLink(project.githubLink)">
+                        <span>GitHub</span>
+                        <span class="arrow">↗</span> <!-- Add the arrow here -->
+                    </button>
+                    <button class="btn-secondary" (click)="openLink(project.liveLink)">
+                        <span>Live Test</span>
+                        <span class="arrow">↗</span> <!-- Add the arrow here -->
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="modal-right">
+                <div class="image-wrapper">
+                    <!-- Project Image -->
+                    <img [src]="project.modalImageUrl || project.imageUrl" alt="{{ project.title }}" class="project-img"/>
+                </div>
+
+                <!-- Next Project -->
+                <div class="next-project" (click)="onNextProject()">
+                    <span>Next Project</span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

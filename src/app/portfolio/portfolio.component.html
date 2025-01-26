@@ -1,0 +1,34 @@
+<section id="projects" class="portfolio">
+    <div class="portfolio-container">
+        <span class="portfolio-headline">
+            {{ translations[selectedLanguage].PORTFOLIO }}
+        </span>
+
+        <h1>{{ translations[selectedLanguage].HEADLINE }}</h1>
+
+        <span class="portfolio-description">
+            {{ translations[selectedLanguage].SUBLINE }}
+        </span>
+
+        <div>
+            <div class="Projects-and-pop-up-container" *ngFor="let project of projects" (click)="openModal(project)">
+                <div class="projects-container">
+                    <div class="project-headline">
+                        {{ project.title }}
+                    </div>
+                    <div class="skills-used-text">
+                        <ng-container *ngFor="let tech of project.technologies; let last = last">
+                            <span>{{ tech }}</span>
+                            <div class="vector-1" *ngIf="!last"></div>
+                        </ng-container>
+                    </div>
+                </div>
+                <img [src]="project.imageUrl" alt="{{ project.title }}" class="pop-up-img-modal"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <app-project-modal *ngIf="selectedProject" [project]="selectedProject" [selectedLanguage]="selectedLanguage"
+        (close)="closeModal()" (next)="nextProject()"></app-project-modal>
+</section>

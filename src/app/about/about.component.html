@@ -1,0 +1,56 @@
+<section id="about" class="about-section">
+    <div class="about-me">
+        <div class="profile-picture-container" (mouseover)="showBackground()">
+            <img id="profile-bg" class="profile-picture-bg" src="../../assets/img/me_background.svg" alt="Background">
+            <img class="profile-picture" src="../../assets/img/me.jpg" alt="Profile Picture">
+        </div>
+
+        <div class="who-i-am-section">
+            <!-- WHO_I_AM key -->
+            <div class="who-i-am">
+                <span>{{ translations[selectedLanguage].WHO_I_AM }}</span>
+            </div>
+
+            <div class="about-me-description">
+                <!-- ABOUT_ME key -->
+                <span class="headline-about-me">
+                    {{ translations[selectedLanguage].ABOUT_ME }}
+                </span>
+
+                <!-- DESCRIPTION key -->
+                <div>
+                    <span>
+                        {{ translations[selectedLanguage].DESCRIPTION }}
+                    </span>
+                </div>
+
+                <!-- Icons with text -->
+                <div class="icons-with-text-main-container">
+                    <!-- LOCATION key -->
+                    <div class="icons-with-text-container">
+                        <img src="../../assets/img/icons/location_icon.svg" alt="">
+                        <span>
+                            {{ translations[selectedLanguage].LOCATION }}
+                        </span>
+                    </div>
+
+                    <!-- MIND_SET key -->
+                    <div class="icons-with-text-container">
+                        <img src="../../assets/img/icons/head_icon.svg" alt="">
+                        <span>
+                            {{ translations[selectedLanguage].MIND_SET }}
+                        </span>
+                    </div>
+
+                    <!-- PRO key -->
+                    <div class="icons-with-text-container">
+                        <img src="../../assets/img/icons/check_icon.svg" alt="">
+                        <span>
+                            {{ translations[selectedLanguage].PRO }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

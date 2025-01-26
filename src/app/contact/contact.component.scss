@@ -1,0 +1,378 @@
+.contact {
+    background-color: rgb(28, 28, 28);
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding-top: 144px;
+    width: 100%;
+    gap: 60px;
+}
+
+.left-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 568px;
+
+    span {
+        font-family: 'Karla', sans-serif;
+    }
+}
+
+.form-container {
+    width: 616px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #00ffcc;
+    font-size: 18px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+}
+
+.single-input-frame {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1px solid rgba(61, 207, 182, 0.5);
+    border-bottom: 1px solid rgba(61, 207, 182, 0.5);
+    padding: 16px 0;
+    gap: 10px;
+
+    span {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28.8px;
+        margin: 0;
+    }
+}
+
+.error-message {
+    margin-top: 5px;
+
+}
+
+.error-text {
+    color: #ff4b4b !important;
+    font-size: 14px !important;
+    font-family: 'Karla', sans-serif;
+}
+
+.checkbox-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 616px;
+    gap: 40px;
+
+    .btn-area {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.privacy-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.checkbox-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    position: relative;
+    padding-left: 44px;
+    line-height: 24px;
+    user-select: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.checkbox-container label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 2px solid #00ffcc;
+    border-radius: 4px;
+    transform: translateY(-50%);
+    transition: border 0.3s;
+}
+
+.checkbox-container label:hover::before {
+    background: rgba(0, 255, 204, 0.2);
+    border-radius: 50%;
+}
+
+.checkbox-container input[type="checkbox"]:checked+label::after {
+    content: '✔';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-47%);
+    color: #00ffcc;
+    font-size: 26px;
+}
+
+.privacy-content .error-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+}
+
+.btn-primary {
+    background: transparent;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    cursor: pointer;
+    height: 48px;
+    border-radius: 100px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 48px;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    width: 172px;
+
+    &:hover {
+        border-color: rgba(61, 207, 182, 1);
+        color: rgba(61, 207, 182, 1);
+    }
+}
+
+.btn-disabled {
+    // background: #b3b3b3; /* Graue Hintergrundfarbe */
+    border: 1px solid #999;
+    /* Grauer Rahmen */
+    color: #666;
+    /* Graue Schrift */
+    cursor: not-allowed;
+
+    /* Verhindert Hover-Effekte */
+    &:hover {
+        background: #b3b3b3;
+        border: 1px solid #999;
+        color: #666;
+    }
+}
+
+.btn-primary:hover {
+    border-color: rgba(61, 207, 182, 1);
+    color: rgba(61, 207, 182, 1);
+}
+
+.btn-primary span {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.checkbox-checked .btn-primary:hover span {
+    animation: scrollLoop 3s linear infinite;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px !important;
+}
+
+@keyframes scrollLoop {
+    0% {
+        transform: translate(-50%, -50%) translateX(0);
+        visibility: visible;
+    }
+
+    49% {
+        transform: translate(-50%, -50%) translateX(-130%);
+        visibility: hidden;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) translateX(130%);
+        visibility: hidden;
+    }
+
+    51% {
+        visibility: visible;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translateX(0);
+        visibility: visible;
+    }
+}
+
+.font-fira {
+    font-family: 'Fira Code', sans-serif;
+}
+
+.font-karla {
+    font-family: 'Karla', sans-serif;
+}
+
+.color {
+    color: rgba(61, 207, 182, 1);
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28.06px;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 64px;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28.8px;
+    margin: 0;
+}
+
+.error-placeholder::placeholder {
+    color: #ff0000;
+}
+
+.privacy-link {
+    text-decoration: none;
+    color: #00ffcc;
+
+    &:hover {
+        color: white;
+    }
+}
+
+
+.success-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    color: rgb(28, 28, 28);
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: fade-in-out 3s ease-in-out;
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Highlight invalid inputs and textareas in red */
+.single-input-frame input.ng-invalid.ng-touched,
+.single-input-frame textarea.ng-invalid.ng-touched {
+  color: #ff4b4b !important; /* Same color as your .error-text */
+}
+
+/* Make the placeholder text red when invalid */
+.single-input-frame input.ng-invalid.ng-touched::placeholder,
+.single-input-frame textarea.ng-invalid.ng-touched::placeholder {
+  color: #ff4b4b !important;
+}
+
+
+@media (max-width: 1440px) {
+    .contact {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .contact {
+        gap: 80px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-contact-form {
+        width: 90% !important;
+    }
+
+    .form-container {
+        width: 90% !important;
+    }
+
+    .checkbox-area {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-contact-form {
+        h1 {
+            font-size: 56px !important;
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .left-contact-form {
+        h1 {
+            font-size: 46px !important;
+        }
+    }
+}

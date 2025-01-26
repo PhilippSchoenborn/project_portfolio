@@ -1,0 +1,220 @@
+.about-section {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgb(28, 28, 28);
+
+    .about-me {
+        display: flex;
+        justify-content: space-between;
+        width: 1274px;
+        height: 708px;
+        padding-top: 144px;
+        padding-right: 51px;
+    }
+
+    .who-i-am {
+        font-family: 'Karla', sans-serif;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28.06px;
+    }
+
+    .who-i-am-section {
+        display: flex;
+        flex-direction: column;
+        width: 568px;
+        height: 610px;
+        padding-top: 98px;
+        gap: 20px;
+        color: rgba(61, 207, 182, 1);
+    }
+
+    .profile-picture-container {
+        display: grid;
+        width: 620px;
+        height: 620px;
+        position: relative;
+    }
+
+    .profile-picture-bg {
+        grid-area: 1 / 1;
+        width: 568px;
+        height: 568px;
+        padding-top: 46px;
+        display: none;
+    }
+
+    .profile-picture {
+        grid-area: 1 / 1;
+        width: 568px;
+        height: 568px;
+        border-radius: 30px;
+        justify-self: end;
+        align-self: start;
+    }
+
+    .profile-picture-container:hover .profile-picture-bg,
+    .profile-picture-bg.visible {
+        display: block;
+        width: 568px;
+        height: 568px;
+    }
+
+    .about-me-description {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: auto;
+        border: 1px solid rgba(61, 207, 182, 1);
+        background-color: rgba(61, 207, 182, 0.1);
+        border-radius: 30px;
+        padding: 32px;
+        gap: 40px;
+        color: white;
+        font-family: 'Karla', sans-serif;
+    }
+
+    .headline-about-me {
+        font-size: 64px;
+        font-weight: 700;
+        font-family: 'Fira Code', sans-serif;
+        color: rgba(61, 207, 182, 1);
+    }
+
+    .icons-with-text-main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .icons-with-text-container {
+        display: flex;
+        align-items: flex-start;
+        width: auto;
+        gap: 24px;
+        font-family: 'Karla', sans-serif;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1.0;
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+
+    body,
+    // html {
+    //     // width: 1024px;
+    // }
+
+    .about-me {
+        flex-direction: column;
+        align-items: center;
+        padding-right: 0 !important;
+    }
+
+    .about-section {
+        height: 1465px;
+    }
+
+    .profile-picture-container {
+        justify-content: center;
+        width: 700px !important;
+    }
+
+    .profile-picture {
+        width: 568px !important;
+        height: 568px !important;
+    }
+
+    .profile-picture-bg.visible {
+       padding-right: 46px;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        height: 1210px !important;
+    }
+
+    .about-me {
+        width: 0 !important;
+        height: 0 !important;
+
+        .profile-picture-container {
+            width: 0 !important;
+        }
+    }
+
+    .profile-picture {
+        width: 370px !important;
+        height: 370px !important;
+    }
+
+    .profile-picture-bg.visible {
+        width: 370px !important;
+        height: 370px !important;
+        padding-top: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    .who-i-am-section {
+        width: 358px !important;
+    }
+
+    .headline-about-me {
+        font-size: 56px !important;
+    }
+
+    .icons-with-text-container span {
+        height: auto;
+        white-space: normal !important; 
+    }
+}
+
+@media (max-width: 499px) {
+    .profile-picture {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .profile-picture-bg.visible {
+        width: 312px !important;
+        height: 312px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .who-i-am-section {
+        width: 300px !important;
+        height: auto !important;
+        padding-top: 40px !important;
+    }
+
+    .headline-about-me{
+        font-size: 42px !important;
+    }
+
+
+    .icons-with-text-main-container{
+        height: auto !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .profile-picture-bg.visible {
+        width: 280px !important;
+        height: 280px !important;
+    } 
+    
+    .profile-picture {
+        width: 280px !important;
+        height: 280px !important;
+    }
+}

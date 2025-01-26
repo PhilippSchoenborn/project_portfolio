@@ -1,0 +1,135 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(28, 28, 28);
+}
+
+.footer-section {
+    color: white;
+    width: 95%;
+    height: 126px;
+    padding-top: 144px;
+    padding-bottom: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.copyright {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    color: rgba(61, 207, 182, 1);
+
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        display: flex;
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 16px;
+        position: relative;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            cursor: pointer;
+            color: rgba(61, 207, 182, 1);
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: rgba(61, 207, 182, 1);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    }
+}
+
+.hidden-copyright {
+    display: none;
+    padding-bottom: 30px !important;
+}
+
+.font-karla {
+    font-family: 'Karla', sans-serif;
+}
+
+.font-fira {
+    font-family: 'Fira Code', sans-serif;
+}
+
+@media (max-width: 1280px) {
+    .footer-section {
+        padding: 100px 16px 30px 16px;
+    }
+}
+
+@media (max-width: 650px) {
+    .footer-section {
+        padding: 50px 4px 30px 4px;
+    }
+
+    .hidden-copyright {
+        display: block;
+    }
+
+    .visible-copyright {
+        display: none;
+    }
+
+    .logo {
+        visibility: hidden;
+        line-height: 8.2px !important;
+        font-size: 1.5rem !important;
+        font-weight: bold !important;
+    }
+
+    .logo::before {
+        visibility: visible;
+        content: 'PS';
+    }
+}
