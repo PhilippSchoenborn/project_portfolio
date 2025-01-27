@@ -83,6 +83,13 @@
         display: flex;
         justify-content: center;
     }
+
+    label {
+        pointer-events: none;
+    }
+    span {
+        pointer-events: visible;
+    }
 }
 
 .privacy-content {

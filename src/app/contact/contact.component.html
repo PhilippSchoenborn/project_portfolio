@@ -22,10 +22,12 @@
       <label for="name" class="font-fira">
         {{ translations[selectedLanguage].FORM_NAME }}
       </label>
-      <input #name="ngModel" class="font-karla" type="text" id="name" name="name"
-        [placeholder]="name.invalid && name.touched ? translations[selectedLanguage].FORM_NAME_ERROR : translations[selectedLanguage].FORM_NAME_PLACEHOLDER"
-        [(ngModel)]="contactData.name" [ngStyle]="{ 'color': name.invalid && name.touched ? '#ff4b4b' : '' }"
-        minlength="2" required />
+      <input #name="ngModel" class="font-karla" type="text" id="name" name="name" [(ngModel)]="contactData.name"
+        [placeholder]="
+          name.invalid && name.touched
+            ? translations[selectedLanguage].FORM_NAME_ERROR
+            : translations[selectedLanguage].FORM_NAME_PLACEHOLDER
+        " [ngStyle]="{ 'color': name.invalid && name.touched ? '#ff4b4b' : '' }" minlength="2" required />
     </div>
 
     <!-- EMAIL FIELD -->
@@ -33,10 +35,13 @@
       <label for="email" class="font-fira">
         {{ translations[selectedLanguage].FORM_MAIL }}
       </label>
-      <input #email="ngModel" class="font-karla" type="email" id="email" name="email"
-        [placeholder]="email.invalid && email.touched ? translations[selectedLanguage].FORM_EMAIL_ERROR : translations[selectedLanguage].FORM_EMAIL_PLACEHOLDER"
-        [(ngModel)]="contactData.email" [ngStyle]="{ 'color': email.invalid && email.touched ? '#ff4b4b' : '' }"
-        required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+      <input #email="ngModel" class="font-karla" type="email" id="email" name="email" [(ngModel)]="contactData.email"
+      [placeholder]="
+        email.invalid && email.touched
+          ? translations[selectedLanguage].FORM_EMAIL_ERROR
+          : translations[selectedLanguage].FORM_EMAIL_PLACEHOLDER
+      " [ngStyle]="{ 'color': email.invalid && email.touched ? '#ff4b4b' : '' }" required
+      pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
     </div>
 
     <!-- MESSAGE FIELD -->
@@ -45,20 +50,25 @@
         {{ translations[selectedLanguage].FORM_QUESTION }}
       </label>
       <textarea #message="ngModel" class="font-karla" style="resize: none" id="message" name="message"
-        [placeholder]="message.invalid && message.touched ? translations[selectedLanguage].FORM_MESSAGE_ERROR : translations[selectedLanguage].FORM_QUESTION_PLACEHOLDER"
-        [(ngModel)]="contactData.message" [ngStyle]="{ 'color': message.invalid && message.touched ? '#ff4b4b' : '' }"
-        minlength="15" required></textarea>
+      [(ngModel)]="contactData.message" [placeholder]="
+      message.invalid && message.touched
+        ? translations[selectedLanguage].FORM_MESSAGE_ERROR
+        : translations[selectedLanguage].FORM_QUESTION_PLACEHOLDER
+    " [ngStyle]="{ 'color': message.invalid && message.touched ? '#ff4b4b' : '' }" minlength="15"
+    required></textarea>
     </div>
 
 
     <!-- CHECKBOX AREA (PRIVACY) -->
-    <div class="checkbox-area" [class.checkbox-checked]="contactForm.form.valid">
+    <div class="checkbox-area" [class.checkbox-checked]="contactForm.form.valid && acceptTerms">
       <div class="privacy-content">
         <div class="checkbox-container">
           <input type="checkbox" id="privacy" name="privacy" required #privacy="ngModel" [(ngModel)]="acceptTerms" />
           <label class="font-karla" for="privacy">
             {{ translations[selectedLanguage].PRIVACY_POLICY_1 }}
-            <span class="color">{{ translations[selectedLanguage].PRIVACY_POLICY_COLOR }}</span>
+            <span class="color" (click)="openDataProtection()">
+              {{ translations[selectedLanguage].PRIVACY_POLICY_COLOR }}
+            </span>
             {{ translations[selectedLanguage].PRIVACY_POLICY_2 }}
           </label>
         </div>
@@ -73,7 +83,8 @@
 
       <!-- SUBMIT BUTTON -->
       <div class="btn-area">
-        <button type="submit" class="btn-primary" [class.btn-disabled]="!acceptTerms" [disabled]="!acceptTerms">
+        <button type="submit" class="btn-primary" [class.btn-disabled]="!contactForm.form.valid || !acceptTerms"
+        [disabled]="!contactForm.form.valid || !acceptTerms">
           <span>{{ translations[selectedLanguage].SUBMIT_BUTTON }}</span>
         </button>
       </div>
