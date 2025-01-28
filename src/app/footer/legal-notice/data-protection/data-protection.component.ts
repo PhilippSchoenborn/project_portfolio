@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component} from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { LanguageService } from '../../../language.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './data-protection.component.html',
   styleUrls: ['./data-protection.component.scss']
 })
-export class DataProtectionComponent{
+export class DataProtectionComponent implements AfterViewInit{
   selectedLanguage: 'EN' | 'DE' = 'EN';
 
   translations = {
@@ -216,6 +216,13 @@ export class DataProtectionComponent{
     private languageService: LanguageService,
     public dialogRef: MatDialogRef<DataProtectionComponent>
   ) { }
+
+  ngAfterViewInit(): void {
+    const element = document.getElementById('top');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   ngOnInit(): void {
     // Subscribe so we know when the user changes the language in Hero

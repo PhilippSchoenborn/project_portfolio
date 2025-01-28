@@ -144,6 +144,16 @@
     }
 }
 
+@media (max-width: 2560px) {
+    .footer-section {
+        justify-content: space-around !important;
+    }
+}
+@media (max-width: 1920px) {
+    .footer-section {
+        justify-content: space-between !important;
+    }
+}
 
 @media (max-width: 1280px) {
     .footer-section {

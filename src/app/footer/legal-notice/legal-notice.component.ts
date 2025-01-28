@@ -44,7 +44,7 @@ export class LegalNoticeComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '99vw';
     dialogConfig.height = '100vh';
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     dialogConfig.panelClass = 'custom-dialog';
     if (!this.dialog.openDialogs.length) {
       this.dialog.open(DataProtectionComponent, dialogConfig);

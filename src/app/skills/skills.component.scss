@@ -271,6 +271,19 @@
     align-items: center;
 }
 
+@media (max-width: 2560px) {
+    .skills-section {
+        gap: 300px !important;
+        justify-content: center;
+    }
+}
+@media (max-width: 1920px) {
+    .skills-section {
+        gap: 183px !important;
+        justify-content: center;
+    }
+}
+
 @media (max-width: 1280px) {
     .skills-section {
         flex-direction: column;

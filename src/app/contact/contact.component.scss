@@ -341,6 +341,16 @@ h2 {
   color: #ff4b4b !important;
 }
 
+@media (max-width: 2560px) {
+    .contact {
+        gap: 190px !important;
+    }
+}
+@media (max-width: 1920px) {
+    .contact {
+        gap: 60px !important;
+    }
+}
 
 @media (max-width: 1440px) {
     .contact {
