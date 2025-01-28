@@ -107,7 +107,7 @@ $modal-bg-image: "../../../assets/img/backgrounds/background_first_section.svg";
         font-family: $font-karla;
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 6px;
         margin-top: 16px;
 
         .tech-item {
@@ -115,7 +115,6 @@ $modal-bg-image: "../../../assets/img/backgrounds/background_first_section.svg";
           align-items: center;
           gap: 8px;
           background: #1c1c1c;
-          padding: 6px 12px;
           border-radius: 4px;
 
           .tech-icon {
@@ -297,19 +296,23 @@ $modal-bg-image: "../../../assets/img/backgrounds/background_first_section.svg";
     width: 80% !important;
   }
 
+  .technologies {
+    margin-top: 10px !important;
+  }
+
   .modal-content {
     flex-direction: column;
     align-items: center;
     width: auto !important;
-    padding: 20px !important;
+    padding: 10px !important;
   }
 
   .modal-left {
-    gap: 12px !important;
+    gap: 0px !important;
   }
 
   .modal-right {
-    gap: 12px !important;
+    gap: 0px !important;
     align-items: flex-start !important;
   }
 
@@ -336,7 +339,7 @@ $modal-bg-image: "../../../assets/img/backgrounds/background_first_section.svg";
   }
 
   .project-img{
-    width: 400px !important;
+    width: 240px !important;
     height: auto !important;
   }
 

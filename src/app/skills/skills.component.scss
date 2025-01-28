@@ -275,8 +275,8 @@
     .skills-section {
         flex-direction: column;
         align-items: center;
-        height: 1180px;
-        gap: 80px;
+        height: 1350px;
+        gap: 0px !important;
         padding-top: 0px !important;
     }
 
@@ -334,6 +334,10 @@
 }
 
 @media (max-width: 600px) {
+    .skills-section {
+        height: 1550px !important;
+    }
+
     .icons {
         justify-content: center !important;
         gap: 45px !important;
@@ -367,5 +371,9 @@
 
     .skill-set-description {
         width: 230px !important;
+    }
+
+    .headline-skill-set {
+        font-size: 32px;
     }
 }

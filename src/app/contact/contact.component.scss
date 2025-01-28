@@ -368,6 +368,12 @@ h2 {
     }
 }
 
+@media (max-width: 768px) {
+    .contact {
+        padding-top: 100px !important;
+    }
+}
+
 @media (max-width: 480px) {
     .left-contact-form {
         h1 {

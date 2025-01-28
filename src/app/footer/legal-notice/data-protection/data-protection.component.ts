@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { LanguageService } from '../../../language.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-data-protection',
@@ -9,7 +10,7 @@ import { LanguageService } from '../../../language.service';
   templateUrl: './data-protection.component.html',
   styleUrls: ['./data-protection.component.scss']
 })
-export class DataProtectionComponent {
+export class DataProtectionComponent{
   selectedLanguage: 'EN' | 'DE' = 'EN';
 
   translations = {
@@ -211,7 +212,10 @@ export class DataProtectionComponent {
     }
   };
 
-  constructor(private languageService: LanguageService) { }
+  constructor(
+    private languageService: LanguageService,
+    public dialogRef: MatDialogRef<DataProtectionComponent>
+  ) { }
 
   ngOnInit(): void {
     // Subscribe so we know when the user changes the language in Hero
@@ -219,8 +223,7 @@ export class DataProtectionComponent {
       this.selectedLanguage = lang;
     });
   }
-
-  // This is optional if you have separate language buttons in About
+  
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
   }

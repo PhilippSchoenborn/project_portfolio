@@ -24,7 +24,7 @@ export class HeroComponent implements OnInit {
       HERO_BTN2: 'Contact me',
       MARQUEE1: 'Available for remote work',
       MARQUEE2: 'Frontend Developer',
-      MARQUEE3: 'Based in Sulzbach an der Murr',
+      MARQUEE3: 'Based in Nagold',
       MARQUEE4: 'Open to work'
     },
     DE: {
@@ -36,7 +36,7 @@ export class HeroComponent implements OnInit {
       HERO_BTN2: 'Kontakt',
       MARQUEE1: 'Für Remote-Arbeit verfügbar',
       MARQUEE2: 'Frontend-Entwickler',
-      MARQUEE3: 'Ansässig in Sulzbach an der Murr',
+      MARQUEE3: 'Ansässig in Nagold',
       MARQUEE4: 'Offen für neue Projekte'
     }
   };

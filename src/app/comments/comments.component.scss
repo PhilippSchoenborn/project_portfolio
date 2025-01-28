@@ -184,6 +184,7 @@
     .comments-section {
         padding-top: 200px !important;
     }
+
     .quote {
         width: 390px !important;
     }
@@ -192,5 +193,9 @@
 @media (max-width: 390px) {
     .quote {
         width: 300px !important;
+    }
+
+    .testimonial-slide {
+        width: 305px !important;
     }
 }
