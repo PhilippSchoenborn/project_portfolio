@@ -375,16 +375,18 @@
                 height: 22px;
                 gap: 50px;
 
-                &:hover {
-                    color: rgba(61, 207, 182, 1);
-                    cursor: pointer;
-                }
-
-                p {
+                a {
                     font-size: 18px;
                     font-weight: 400;
                     line-height: 32.6px;
                     font-family: 'Karla', sans-serif;
+                    text-decoration: none;
+                    color: white;
+
+                    &:hover {
+                            color: rgba(61, 207, 182, 1);
+                            cursor: pointer;
+                    }
                 }
 
                 img {
@@ -494,11 +496,11 @@
         transform: none !important;
         padding-bottom: 8px !important;
 
-        p {
+        a {
             display: none;
         }
 
-        img {
+        img, .mail-button {
             width: 32px !important;
             height: auto !important;
             display: block !important;
@@ -513,6 +515,7 @@
         }
     }
 }
+
 
 // .scroll-icon {
 //     margin-left: 124px !important;
