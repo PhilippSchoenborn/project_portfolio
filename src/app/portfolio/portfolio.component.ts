@@ -73,7 +73,7 @@ export class PortfolioComponent {
         DE: 'Ein Jump-and-Run-Spiel basierend auf einem objektorientierten Ansatz. Helfen Sie Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu kämpfen.',
       },
       technologies: ['JavaScript', 'HTML', 'CSS'],
-      githubLink: 'https://github.com/PhilippSchoenborn/project_el_pollo_loco',
+      githubLink: 'https://github.com/PhilippSchoenborn/El_Pollo_Loco_Phil_Cenk',
       liveLink: 'https://philipp-schoenborn.de/elpolloloco',
       imageUrl: 'assets/img/pop-ups/el_pollo_loco_pop_up.svg',
       modalImageUrl: 'assets/img/pop-ups/modal_loco.svg',
