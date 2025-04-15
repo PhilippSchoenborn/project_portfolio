@@ -5,7 +5,6 @@
     width: 100%;
     height: 995px;
     background: url('../../assets/img/backgrounds/bg-skills.svg') center/cover no-repeat;
-    padding-top: 144px;
 }
 
 .skill-set-description {
@@ -289,9 +288,10 @@
     .skills-section {
         flex-direction: column;
         align-items: center;
-        height: 1350px;
+        height: 1250px;
         gap: 0px !important;
         padding-top: 0px !important;
+        padding-bottom: 60px;
     }
 
     .self-summary-section {
@@ -323,7 +323,7 @@
 @media (max-width: 768px) {
     .self-summary-section {
         width: 390px !important;
-        padding-top: 144px !important;
+        // padding-top: 60px !important;
     }
 
     .skill-set-description {
@@ -348,9 +348,9 @@
 }
 
 @media (max-width: 600px) {
-    .skills-section {
-        height: 1550px !important;
-    }
+    // .skills-section {
+    //     height: 1350px !important;
+    // }
 
     .icons {
         justify-content: center !important;

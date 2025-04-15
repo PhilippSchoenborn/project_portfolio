@@ -306,10 +306,11 @@
     }
 
     .hero-marquee {
-        position: absolute;
+        // position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
+        max-width: 2560px;
         height: 38px;
         background: rgba(255, 255, 255, 0.12);
         backdrop-filter: blur(5.3px);
