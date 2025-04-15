@@ -481,6 +481,22 @@
     }
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);  // Halbtransparent, anpassbar
+    z-index: 10; // Muss hinter deinem Menü liegen
+  }
+  
+  /* Stelle sicher, dass dein Menü (bspw. .navbar und .burger-dropdown) einen höheren z-index haben */
+  .navbar {
+    position: relative;
+    z-index: 20;
+  }
+
 /* MEDIA QUERIES */
 @media (max-width: 1439px) {
     .name {

@@ -42,13 +42,13 @@
       <div class="burger-dropdown" *ngIf="menuOpen">
         <ul>
           <li>
-            <a href="#about">{{ translations[selectedLanguage].NAV1 }}</a>
+            <a href="#about" (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a>
           </li>
           <li>
-            <a href="#projects">{{ translations[selectedLanguage].NAV2 }}</a>
+            <a href="#projects" (click)="navigate('projects')">{{ translations[selectedLanguage].NAV2 }}</a>
           </li>
           <li>
-            <a href="#contact">{{ translations[selectedLanguage].NAV3 }}</a>
+            <a href="#contact" (click)="navigate('contact')">{{ translations[selectedLanguage].NAV3 }}</a>
           </li>
         </ul>
         <div class="language-switch">
@@ -63,6 +63,8 @@
         </div>
       </div>
     </nav>
+
+    <div class="overlay" *ngIf="menuOpen" (click)="menuOpen = false"></div>
   
     <!-- HERO CONTENT -->
     <div class="hero-content">

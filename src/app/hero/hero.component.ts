@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../language.service';
 
@@ -10,9 +10,8 @@ import { LanguageService } from '../language.service';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
-  // Local property to store the current language
   selectedLanguage: 'EN' | 'DE' = 'EN';
-  menuOpen: boolean = false; // Tracks burger menu state
+  menuOpen: boolean = false;
 
   translations = {
     EN: {
@@ -41,26 +40,36 @@ export class HeroComponent implements OnInit {
     }
   };
 
-  constructor(private languageService: LanguageService) { }
+  constructor(
+    private languageService: LanguageService,
+    private _eref: ElementRef
+  ) { }
 
   ngOnInit(): void {
-    // Subscribe to the service so we know the current language
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
   }
 
-  // When the user clicks a button to change language
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
   }
 
   toggleMenu() {
-    this.menuOpen = !this.menuOpen; // Toggles burger menu state
+    this.menuOpen = !this.menuOpen;
   }
 
+  // Diese Methode wird aufgerufen, wenn ein Menü-Link angeklickt wird
   navigate(link: string) {
+    // Führe die Navigation aus (z.B. Router.navigate(...))
     this.menuOpen = false;
-    // Logic to navigate to the link
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Wenn das Menü offen ist und der Klick außerhalb des Components erfolgt
+    if (this.menuOpen && !this._eref.nativeElement.contains(event.target)) {
+      this.menuOpen = false;
+    }
   }
 }
