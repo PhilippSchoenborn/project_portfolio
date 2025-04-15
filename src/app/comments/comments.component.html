@@ -6,8 +6,8 @@
 
     <!-- Slideshow -->
     <div class="slideshow">
-        <div class="testimonial-container">
-            <div class="testimonial-slide" *ngFor="let t of circularSlides; let i = index" [class.active]="i === 1">
+        <div class="testimonial-slider" [style.transform]="getTransform()" [style.transition]="transition">
+            <div class="testimonial-slide" *ngFor="let t of testimonials">
                 <!-- Quote -->
                 <div class="quote">
                     <span class="quote-symbol">“</span>

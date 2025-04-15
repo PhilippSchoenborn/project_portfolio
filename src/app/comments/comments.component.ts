@@ -66,6 +66,12 @@ export class CommentsComponent {
     ];
   }
 
+  transition = 'transform 0.5s ease'; // du kannst es auch per SCSS machen
+
+getTransform(): string {
+  return `translateX(-${this.currentIndex * 100}%)`;
+}
+
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
   }
