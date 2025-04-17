@@ -40,6 +40,11 @@ export class ImprintComponent implements OnInit {
           Baumschulenring 26<br>
           72202 Nagold
         </p>
+        <p>
+          Cenk Korkmaz<br>
+          Kleinhöchbergerstraße 45<br>
+          71560 Sulzbach an der Murr
+        </p>
       `,
       block5: `
         <p>
@@ -78,6 +83,11 @@ export class ImprintComponent implements OnInit {
           Philipp Schönborn<br>
           Baumschulenring 26<br>
           72202 Nagold
+        </p>
+        <p>
+          Cenk Korkmaz<br>
+          Kleinhöchbergerstraße 45<br>
+          71560 Sulzbach an der Murr
         </p>
       `,
       block5: `
