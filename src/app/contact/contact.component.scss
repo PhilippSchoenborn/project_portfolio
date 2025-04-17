@@ -32,6 +32,7 @@
     border: none;
     color: #00ffcc;
     font-size: 18px;
+    line-height: normal;
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.3s;
 }
@@ -60,7 +61,6 @@
 
 .error-message {
     margin-top: 5px;
-
 }
 
 .error-text {
@@ -87,6 +87,7 @@
     label {
         pointer-events: none;
     }
+
     span {
         pointer-events: visible;
     }
@@ -183,24 +184,15 @@
 }
 
 .btn-disabled {
-    // background: #b3b3b3; /* Graue Hintergrundfarbe */
     border: 1px solid #999;
-    /* Grauer Rahmen */
     color: #666;
-    /* Graue Schrift */
     cursor: not-allowed;
 
-    /* Verhindert Hover-Effekte */
     &:hover {
         background: #b3b3b3;
         border: 1px solid #999;
         color: #666;
     }
-}
-
-.btn-primary:hover {
-    border-color: rgba(61, 207, 182, 1);
-    color: rgba(61, 207, 182, 1);
 }
 
 .btn-primary span {
@@ -215,11 +207,6 @@
 
 .checkbox-checked .btn-primary:hover span {
     animation: scrollLoop 3s linear infinite;
-}
-
-.error-message {
-    color: red;
-    font-size: 14px !important;
 }
 
 @keyframes scrollLoop {
@@ -282,20 +269,6 @@ h2 {
     margin: 0;
 }
 
-.error-placeholder::placeholder {
-    color: #ff0000;
-}
-
-.privacy-link {
-    text-decoration: none;
-    color: #00ffcc;
-
-    &:hover {
-        color: white;
-    }
-}
-
-
 .success-popup {
     position: fixed;
     top: 20px;
@@ -329,33 +302,39 @@ h2 {
     }
 }
 
-/* Highlight invalid inputs and textareas in red */
+/* Highlight invalid */
 .single-input-frame input.ng-invalid.ng-touched,
 .single-input-frame textarea.ng-invalid.ng-touched {
-  color: #ff4b4b !important; /* Same color as your .error-text */
+    color: #ff4b4b !important;
 }
 
-/* Make the placeholder text red when invalid */
 .single-input-frame input.ng-invalid.ng-touched::placeholder,
 .single-input-frame textarea.ng-invalid.ng-touched::placeholder {
-  color: #ff4b4b !important;
+    color: #ff4b4b !important;
 }
 
-@media (max-width: 9000px) {
-    .contact {
-        gap: 190px !important;
-    }
-}
-@media (max-width: 1920px) {
-    .contact {
-        gap: 60px !important;
-    }
+/* Autofill overrides: match normal inputs exactly */
+.form-container input:-webkit-autofill,
+.form-container textarea:-webkit-autofill,
+.form-container input:-webkit-autofill:hover,
+.form-container textarea:-webkit-autofill:hover,
+.form-container input:-webkit-autofill:focus,
+.form-container textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: inset 0 0 0px 1000px rgb(28, 28, 28) !important;
+    box-shadow: inset 0 0 0px 1000px rgb(28, 28, 28) !important;
+    -webkit-text-fill-color: #00ffcc !important;
+    font-size: 18px !important;
+    line-height: normal !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
-@media (max-width: 1440px) {
-    .contact {
-        gap: 8px;
-    }
+/* Firefox autofill */
+.form-container input:-moz-autofill,
+.form-container textarea:-moz-autofill {
+    box-shadow: inset 0 0 0px 1000px rgb(28, 28, 28) !important;
+    -moz-text-fill-color: #00ffcc !important;
+    font-size: 18px !important;
+    line-height: normal !important;
 }
 
 @media (max-width: 1280px) {
@@ -365,10 +344,7 @@ h2 {
         align-items: center;
     }
 
-    .left-contact-form {
-        width: 90% !important;
-    }
-
+    .left-contact-form,
     .form-container {
         width: 90% !important;
     }
@@ -385,17 +361,13 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    .left-contact-form {
-        h1 {
-            font-size: 56px !important;
-        }
+    .left-contact-form h1 {
+        font-size: 56px !important;
     }
 }
 
 @media (max-width: 390px) {
-    .left-contact-form {
-        h1 {
-            font-size: 46px !important;
-        }
+    .left-contact-form h1 {
+        font-size: 46px !important;
     }
 }
