@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../language.service';
 
@@ -11,7 +11,6 @@ import { LanguageService } from '../language.service';
 })
 export class HeroComponent implements OnInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
-  menuOpen: boolean = false;
 
   translations = {
     EN: {
@@ -23,7 +22,7 @@ export class HeroComponent implements OnInit {
       HERO_BTN2: 'Contact me',
       MARQUEE1: 'Available for remote work',
       MARQUEE2: 'Frontend Developer',
-      MARQUEE3: 'Based in Nagold',
+      MARQUEE3: 'Based in Sulzbach an der Murr',
       MARQUEE4: 'Open to work'
     },
     DE: {
@@ -35,41 +34,16 @@ export class HeroComponent implements OnInit {
       HERO_BTN2: 'Kontakt',
       MARQUEE1: 'Für Remote-Arbeit verfügbar',
       MARQUEE2: 'Frontend-Entwickler',
-      MARQUEE3: 'Ansässig in Nagold',
+      MARQUEE3: 'Ansässig in Sulzbach an der Murr',
       MARQUEE4: 'Offen für neue Projekte'
     }
   };
 
-  constructor(
-    private languageService: LanguageService,
-    private _eref: ElementRef
-  ) { }
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
-  }
-
-  setLanguage(language: 'EN' | 'DE') {
-    this.languageService.setLanguage(language);
-  }
-
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
-
-  // Diese Methode wird aufgerufen, wenn ein Menü-Link angeklickt wird
-  navigate(link: string) {
-    // Führe die Navigation aus (z.B. Router.navigate(...))
-    this.menuOpen = false;
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    // Wenn das Menü offen ist und der Klick außerhalb des Components erfolgt
-    if (this.menuOpen && !this._eref.nativeElement.contains(event.target)) {
-      this.menuOpen = false;
-    }
   }
 }

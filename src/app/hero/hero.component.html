@@ -1,139 +1,66 @@
 <section id="hero" class="hero">
-    <nav class="navbar" [ngClass]="{ 'menu-open': menuOpen }">
-      <!-- LEFT CONTENT FOR LARGER SCREENS -->
-      <div class="navbar-left-content">
-        <!-- Language Switch Buttons -->
-        <div class="language-switch">
-          <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
-                  (click)="setLanguage('EN')">
-            <span class="lang-text">EN</span>
-          </button>
-          <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'DE' }"
-                  (click)="setLanguage('DE')">
-            <span class="lang-text">DE</span>
-          </button>
-        </div>
-  
-        <!-- Nav Links using translations -->
-        <ul class="nav-links">
-          <li>
-            <a href="#about">{{ translations[selectedLanguage].NAV1 }}</a>
-          </li>
-          <li>
-            <a href="#projects">{{ translations[selectedLanguage].NAV2 }}</a>
-          </li>
-          <li>
-            <a href="#contact">{{ translations[selectedLanguage].NAV3 }}</a>
-          </li>
-        </ul>
-      </div>
-  
-      <!-- Logo stays as is (but will become “CK” on small screens) -->
-      <div class="logo">Philipp <br />Schönborn</div>
-  
-      <!-- Burger Menu for Small Screens -->
-      <div class="burger-menu" (click)="toggleMenu()">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-  
-      <!-- Dropdown menu for small screens -->
-      <div class="burger-dropdown" *ngIf="menuOpen">
-        <ul>
-          <li>
-            <a href="#about" (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a>
-          </li>
-          <li>
-            <a href="#projects" (click)="navigate('projects')">{{ translations[selectedLanguage].NAV2 }}</a>
-          </li>
-          <li>
-            <a href="#contact" (click)="navigate('contact')">{{ translations[selectedLanguage].NAV3 }}</a>
-          </li>
-        </ul>
-        <div class="language-switch">
-          <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
-                  (click)="setLanguage('EN')">
-            EN
-          </button>
-          <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'DE' }"
-                  (click)="setLanguage('DE')">
-            DE
-          </button>
-        </div>
-      </div>
-    </nav>
+  <div class="hero-content">
+    <p class="job">{{ translations[selectedLanguage].HERO_TITLE }}</p>
+    <p class="name">Philipp Schönborn</p>
+    <div class="buttons">
+      <a href="#projects" class="btn-primary">
+        <span>{{ translations[selectedLanguage].HERO_BTN1 }}</span>
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <span>{{ translations[selectedLanguage].HERO_BTN2 }}</span>
+      </a>
+    </div>
+  </div>
 
-    <div class="overlay" *ngIf="menuOpen" (click)="menuOpen = false"></div>
-  
-    <!-- HERO CONTENT -->
-    <div class="hero-content">
-      <p class="job">{{ translations[selectedLanguage].HERO_TITLE }}</p>
-      <p class="name">Philipp Schönborn</p>
-      <div class="buttons">
-        <a href="#projects" class="btn-primary">
-          <span>{{ translations[selectedLanguage].HERO_BTN1 }}</span>
-        </a>
-        <a href="#contact" class="btn-secondary">
-          <span>{{ translations[selectedLanguage].HERO_BTN2 }}</span>
-        </a>
+  <div class="bottom-section-hero-component">
+    <div class="scroll-icon">
+      <div class="scroll-arrow-container">
+        <div class="scroll-arrow"></div>
+      </div>
+      <div class="left-vector"></div>
+    </div>
+    <div class="social-links">
+      <div class="rotated-mail">
+        <a href="#contact">philipp&#64;schoenborn-home.de</a>
+        <div class="icon-wrapper">
+          <a href="#contact" class="mail-button">
+            <img src="../../assets/img/icons/mail_icon_default.svg" alt="Email Icon" class="social-icon mail"/>
+          </a>
+        </div>
+      </div>
+      <a href="https://github.com/CenkKorkmaz92" target="_blank" class="social-icon github">
+        <img src="../../assets/img/icons/github_icon_default.svg" alt="GitHub Icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/cenk-korkmaz-2731072a5" target="_blank" class="social-icon linkedin">
+        <img src="../../assets/img/icons/linkedin_icon_default.svg" alt="LinkedIn Icon" />
+      </a>
+      <div class="right-vector"></div>
+    </div>
+  </div>
+
+  <div class="hero-marquee">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE1 }}</p>
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE2 }}</p>
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE3 }}</p>
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE4 }}</p>
+        <p>•</p>
+      </div>
+      <div class="marquee-content">
+        <p>{{ translations[selectedLanguage].MARQUEE1 }}</p>
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE2 }}</p>
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE3 }}</p>
+        <p>•</p>
+        <p>{{ translations[selectedLanguage].MARQUEE4 }}</p>
+        <p>•</p>
       </div>
     </div>
-  
-    <!-- SCROLL / SOCIAL AREA -->
-    <div class="bottom-section-hero-component">
-      <div class="scroll-icon">
-        <div class="scroll-arrow-container">
-          <div class="scroll-arrow"></div>
-        </div>
-        <div class="left-vector"></div>
-        <!-- <img src="../../assets/img/icons/vector_color_left_side.svg" alt="Left vector icon" /> -->
-      </div>
-      <div class="social-links">
-        <div class="rotated-mail">
-          <a href="#contact">philipp&#64;schoenborn-home.de</a>
-          <div class="icon-wrapper">
-            <a href="#contact" class="mail-button"><img src="../../assets/img/icons/mail_icon_default.svg" alt="Email Icon" class="social-icon mail"/></a>
-          </div>
-        </div>
-        <a href="https://github.com/PhilippSchoenborn" target="_blank" class="social-icon github">
-          <img src="../../assets/img/icons/github_icon_default.svg" alt="GitHub Icon" />
-        </a>
-        <a href="https://www.linkedin.com/in/philipp-sch%C3%B6nborn-301511152/" target="_blank" class="social-icon linkedin">
-          <img src="../../assets/img/icons/linkedin_icon_default.svg" alt="LinkedIn Icon" />
-        </a>
-        <div class="right-vector"></div>
-        <!-- <img src="../../assets/img/icons/vector_grey_right_side.svg" alt="Right vector icon" /> -->
-      </div>
-    </div>
-  
-    <!-- MARQUEE -->
-    <div class="hero-marquee">
-      <div class="marquee-track">
-        <!-- Erste Kopie -->
-        <div class="marquee-content">
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE1 }}</p>
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE2 }}</p>
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE3 }}</p>
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE4 }}</p>
-          <p>•</p>
-        </div>
-        <!-- Zweite Kopie -->
-        <div class="marquee-content">
-          <p>{{ translations[selectedLanguage].MARQUEE1 }}</p>
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE2 }}</p>
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE3 }}</p>
-          <p>•</p>
-          <p>{{ translations[selectedLanguage].MARQUEE4 }}</p>
-          <p>•</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
+  </div>
+</section>

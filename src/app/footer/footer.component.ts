@@ -12,11 +12,11 @@ import { RouterModule } from '@angular/router';
 export class FooterComponent {
 
   scrollToHero() {
-    const heroElement = document.getElementById('hero'); // Find the navbar with id "hero"
+    const heroElement = document.getElementById('navbar'); // Find the navbar with id "navbar"
     if (heroElement) {
       heroElement.scrollIntoView({ behavior: 'smooth' }); // Smoothly scroll to the navbar
     } else {
-      console.warn('Hero element not found!');
+      console.warn('navbar element not found!');
     }
   }
 

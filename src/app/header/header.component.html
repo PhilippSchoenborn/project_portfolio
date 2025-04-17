@@ -1,0 +1,46 @@
+<div class="background">
+    <nav class="navbar" [ngClass]="{ 'menu-open': menuOpen }" id="navbar">
+        <div class="navbar-left-content">
+            <div class="language-switch">
+                <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
+                    (click)="setLanguage('EN')">
+                    <span class="lang-text">EN</span>
+                </button>
+                <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'DE' }"
+                    (click)="setLanguage('DE')">
+                    <span class="lang-text">DE</span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">{{ translations[selectedLanguage].NAV1 }}</a></li>
+                <li><a href="#projects">{{ translations[selectedLanguage].NAV2 }}</a></li>
+                <li><a href="#contact">{{ translations[selectedLanguage].NAV3 }}</a></li>
+            </ul>
+        </div>
+
+        <div class="logo">Philipp<br />Schönborn</div>
+
+        <div class="burger-menu" (click)="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <div class="burger-dropdown" *ngIf="menuOpen">
+            <ul>
+                <li><a href="#about" (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a></li>
+                <li><a href="#projects" (click)="navigate('projects')">{{ translations[selectedLanguage].NAV2 }}</a>
+                </li>
+                <li><a href="#contact" (click)="navigate('contact')">{{ translations[selectedLanguage].NAV3 }}</a></li>
+            </ul>
+            <div class="language-switch">
+                <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
+                    (click)="setLanguage('EN')">EN</button>
+                <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'DE' }"
+                    (click)="setLanguage('DE')">DE</button>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="overlay" *ngIf="menuOpen" (click)="menuOpen = false"></div>

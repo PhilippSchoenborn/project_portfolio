@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 98px);
     background-image: url('../../assets/img/backgrounds/background_first_section.svg');
     background-size: cover;
     background-repeat: no-repeat;
