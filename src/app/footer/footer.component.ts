@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, LegalNoticeComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
@@ -19,5 +19,5 @@ export class FooterComponent {
       console.warn('Hero element not found!');
     }
   }
-  
+
 }
