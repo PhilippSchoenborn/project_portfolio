@@ -69,6 +69,18 @@
     font-family: 'Karla', sans-serif;
 }
 
+.single-input-frame label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.single-input-frame .error-text {
+    color: #ff4b4b;
+    font-size: 14px;
+    margin-left: 12px;
+}
+
 .checkbox-area {
     display: flex;
     justify-content: space-between;

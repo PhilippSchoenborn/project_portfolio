@@ -21,41 +21,38 @@
     <div class="single-input-frame">
       <label for="name" class="font-fira">
         {{ translations[selectedLanguage].FORM_NAME }}
+        <small class="error-text" *ngIf="name.invalid && name.touched">
+          {{ translations[selectedLanguage].FORM_NAME_ERROR }}
+        </small>
       </label>
       <input #name="ngModel" class="font-karla" type="text" id="name" name="name" [(ngModel)]="contactData.name"
-        [placeholder]="
-          name.invalid && name.touched
-            ? translations[selectedLanguage].FORM_NAME_ERROR
-            : translations[selectedLanguage].FORM_NAME_PLACEHOLDER
-        " [ngStyle]="{ 'color': name.invalid && name.touched ? '#ff4b4b' : '' }" minlength="2" required />
+        placeholder="{{ translations[selectedLanguage].FORM_NAME_PLACEHOLDER }}" minlength="2" required />
     </div>
 
     <!-- EMAIL FIELD -->
     <div class="single-input-frame">
       <label for="email" class="font-fira">
         {{ translations[selectedLanguage].FORM_MAIL }}
+        <small class="error-text" *ngIf="email.invalid && email.touched">
+          {{ translations[selectedLanguage].FORM_EMAIL_ERROR }}
+        </small>
       </label>
       <input #email="ngModel" class="font-karla" type="email" id="email" name="email" [(ngModel)]="contactData.email"
-      [placeholder]="
-        email.invalid && email.touched
-          ? translations[selectedLanguage].FORM_EMAIL_ERROR
-          : translations[selectedLanguage].FORM_EMAIL_PLACEHOLDER
-      " [ngStyle]="{ 'color': email.invalid && email.touched ? '#ff4b4b' : '' }" required
-      pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+        placeholder="{{ translations[selectedLanguage].FORM_EMAIL_PLACEHOLDER }}" required
+        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
     </div>
 
     <!-- MESSAGE FIELD -->
     <div class="single-input-frame">
       <label for="message" class="font-fira">
         {{ translations[selectedLanguage].FORM_QUESTION }}
+        <small class="error-text" *ngIf="message.invalid && message.touched">
+          {{ translations[selectedLanguage].FORM_MESSAGE_ERROR }}
+        </small>
       </label>
       <textarea #message="ngModel" class="font-karla" style="resize: none" id="message" name="message"
-      [(ngModel)]="contactData.message" [placeholder]="
-      message.invalid && message.touched
-        ? translations[selectedLanguage].FORM_MESSAGE_ERROR
-        : translations[selectedLanguage].FORM_QUESTION_PLACEHOLDER
-    " [ngStyle]="{ 'color': message.invalid && message.touched ? '#ff4b4b' : '' }" minlength="15"
-    required></textarea>
+        [(ngModel)]="contactData.message" placeholder="{{ translations[selectedLanguage].FORM_QUESTION_PLACEHOLDER }}"
+        minlength="15" required></textarea>
     </div>
 
 
@@ -84,7 +81,7 @@
       <!-- SUBMIT BUTTON -->
       <div class="btn-area">
         <button type="submit" class="btn-primary" [class.btn-disabled]="!contactForm.form.valid || !acceptTerms"
-        [disabled]="!contactForm.form.valid || !acceptTerms">
+          [disabled]="!contactForm.form.valid || !acceptTerms">
           <span>{{ translations[selectedLanguage].SUBMIT_BUTTON }}</span>
         </button>
       </div>
