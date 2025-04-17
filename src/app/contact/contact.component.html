@@ -21,7 +21,7 @@
     <div class="single-input-frame">
       <label for="name" class="font-fira">
         {{ translations[selectedLanguage].FORM_NAME }}
-        <small class="error-text" *ngIf="name.invalid && name.touched">
+        <small class="error-text" *ngIf="name.invalid && name.dirty && name.value">
           {{ translations[selectedLanguage].FORM_NAME_ERROR }}
         </small>
       </label>
@@ -33,7 +33,7 @@
     <div class="single-input-frame">
       <label for="email" class="font-fira">
         {{ translations[selectedLanguage].FORM_MAIL }}
-        <small class="error-text" *ngIf="email.invalid && email.touched">
+        <small class="error-text" *ngIf="email.invalid && email.dirty && email.value">
           {{ translations[selectedLanguage].FORM_EMAIL_ERROR }}
         </small>
       </label>
@@ -46,7 +46,7 @@
     <div class="single-input-frame">
       <label for="message" class="font-fira">
         {{ translations[selectedLanguage].FORM_QUESTION }}
-        <small class="error-text" *ngIf="message.invalid && message.touched">
+        <small class="error-text" *ngIf="message.invalid && message.dirty && message.value">
           {{ translations[selectedLanguage].FORM_MESSAGE_ERROR }}
         </small>
       </label>
@@ -54,7 +54,6 @@
         [(ngModel)]="contactData.message" placeholder="{{ translations[selectedLanguage].FORM_QUESTION_PLACEHOLDER }}"
         minlength="15" required></textarea>
     </div>
-
 
     <!-- CHECKBOX AREA (PRIVACY) -->
     <div class="checkbox-area" [class.checkbox-checked]="contactForm.form.valid && acceptTerms">
@@ -71,7 +70,7 @@
         </div>
 
         <!-- Privacy Error -->
-        <div class="error-message" *ngIf="privacy.invalid && privacy.touched">
+        <div class="error-message" *ngIf="privacy.invalid && privacy.dirty">
           <small class="error-text">
             {{ translations[selectedLanguage].PRIVACY_ERROR }}
           </small>
