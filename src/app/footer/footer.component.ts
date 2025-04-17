@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class FooterComponent {
 
-  scrollToHero() {
+  scrollToNavbar() {
     const heroElement = document.getElementById('navbar'); // Find the navbar with id "navbar"
     if (heroElement) {
       heroElement.scrollIntoView({ behavior: 'smooth' }); // Smoothly scroll to the navbar

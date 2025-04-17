@@ -32,6 +32,11 @@
     }
 }
 
+.logo-footer:hover {
+    cursor: pointer;
+    color: rgba(61, 207, 182, 1);
+}
+
 .info {
     display: flex;
     flex-direction: column;
@@ -53,26 +58,22 @@
     a {
         text-decoration: none;
     }
-
-    button {
+    button,
+    .legal-notice-link {
         display: flex;
-        border: none;
+        align-items: center;
+        justify-content: center;
+
         background: transparent;
+        border: none;
         color: white;
         font-size: 16px;
         position: relative;
-        transition: transform 0.3s ease;
-
-        &:hover {
-            cursor: pointer;
-            color: rgba(61, 207, 182, 1);
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 4px;
-        }
-
-        &:hover::before {
-            opacity: 1;
-        }
+        padding: 0.5em 1em;
+        border-radius: 4px;
+        transition: transform 0.3s ease,
+            color 0.3s ease,
+            background-color 0.3s ease;
 
         &::before {
             content: "";
@@ -86,6 +87,16 @@
             border-radius: 50%;
             opacity: 0;
             transition: opacity 0.3s ease;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: rgba(61, 207, 182, 1);
+            background-color: rgba(255, 255, 255, 0.1);
+
+            &::before {
+                opacity: 1;
+            }
         }
     }
 }
