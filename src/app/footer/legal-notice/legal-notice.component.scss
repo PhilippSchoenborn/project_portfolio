@@ -1,76 +1,24 @@
-body {
-    background-color: rgb(28, 28, 28);
-}
-
-.font-karla {
-    font-family: 'Karla', sans-serif;
-}
-
-.social-links.mat-button:hover {
-    background-color: transparent !important; /* Entfernt die Hintergrundfarbe beim Hover */
-    box-shadow: none !important; /* Entfernt den Hover-Schatten */
-    color: inherit !important; /* Beibehaltung der ursprünglichen Schriftfarbe */
-    transition: none !important; /* Verhindert jegliche Animationen */
-  }
-
-.button-legal-notice:hover{
-    background: none !important; /* Kein Hintergrund */
-    border: none !important; /* Keine Rahmen */
-    box-shadow: none !important; /* Keine Box-Schatten */
-}
-
-.social-links-legel-notice {
+.button-legal-notice {
+    height: calc(100vh - 98px - 314px);
+    background-image: url('../../../assets/img/backgrounds/background_first_section.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 16px;
-    font-weight: 400;
-    height: 20px;
-    letter-spacing: normal !important;
-    padding: 0;
-    padding-left: 6px;
-    background: none !important; /* Kein Hintergrund */
-    border: none !important; /* Keine Rahmen */
-    box-shadow: none !important; /* Keine Box-Schatten */
-
-    &:hover {
-        cursor: pointer;
-        color: rgba(61, 207, 182, 1);
-        background: none !important; /* Entferne Hintergrundfarbe beim Hover */
-        box-shadow: none !important; /* Entferne Box-Schatten */
-    }
-
-    &:hover::before {
-        opacity: 1;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        left: -12px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 6px;
-        height: 6px;
-        background-color: rgba(61, 207, 182, 1);
-        border-radius: 50%;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    a {
-        text-decoration: none;
-    }
+    align-items: center;
+    justify-content: center;
 }
-
-.single-button{
-    min-height: 36px !important;
-}
-
-button:hover {
-    color: rgba(61, 207, 182, 1);
-    background: none !important; /* Entferne Hintergrundfarbe beim Hover */
-    box-shadow: none !important; /* Entferne Box-Schatten */
+.button-legal-notice {
+    height: calc(100vh - 98px - 314px);
+    background-image: url('../../../assets/img/backgrounds/background_first_section.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .font-karla {
@@ -79,4 +27,85 @@ button:hover {
 
 .font-fira {
     font-family: 'Fira Code', sans-serif;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+
+    .btn-primary {
+        width: 172px;
+    }
+
+    .btn-secondary {
+        width: 143px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        cursor: pointer;
+        height: 48px;
+        border-radius: 100px;
+        font-family: 'Karla', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 48px;
+        text-align: center;
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        border-color: rgba(61, 207, 182, 1);
+        color: rgba(61, 207, 182, 1);
+    }
+
+    .btn-primary span,
+    .btn-secondary span {
+        display: inline-block;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .btn-primary:hover span,
+    .btn-secondary:hover span {
+        animation: scrollLoop 3s linear infinite;
+    }
+
+    @keyframes scrollLoop {
+        0% {
+            transform: translate(-50%, -50%) translateX(0);
+            visibility: visible;
+        }
+
+        49% {
+            transform: translate(-50%, -50%) translateX(-130%);
+            visibility: hidden;
+        }
+
+        50% {
+            transform: translate(-50%, -50%) translateX(130%);
+            visibility: hidden;
+        }
+
+        51% {
+            visibility: visible;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) translateX(0);
+            visibility: visible;
+        }
+    }
 }

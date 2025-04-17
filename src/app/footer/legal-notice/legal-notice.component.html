@@ -1,7 +1,10 @@
 <div class="button-legal-notice">
-    <button mat-button [matMenuTriggerFor]="legalNoticeMenu" class="social-links-legel-notice">Legal Notice</button>
-    <mat-menu #legalNoticeMenu="matMenu">
-      <button mat-menu-item (click)="openDataProtection()" class="single-button">Data Protection</button>
-      <button mat-menu-item (click)="openImprint()" class="single-button">Imprint</button>
-    </mat-menu>
+  <div class="buttons">
+    <button (click)="openDataProtection()" class="btn-primary">
+      <span>Data Protection</span>
+    </button>
+    <button (click)="openImprint()" class="btn-secondary">
+      <span>Imprint</span>
+    </button>
   </div>
+</div>
