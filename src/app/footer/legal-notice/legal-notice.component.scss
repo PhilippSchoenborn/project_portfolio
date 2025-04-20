@@ -98,3 +98,17 @@
         }
     }
 }
+
+@media (max-width: 430px) {
+    .buttons {
+        gap: 20px !important;
+    }
+
+    .btn-primary {
+        width: 150px !important;
+    }
+
+    .btn-secondary {
+        width: 130px !important;
+    }
+}

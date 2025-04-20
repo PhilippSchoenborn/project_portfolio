@@ -630,6 +630,24 @@
     .buttons {
         gap: 30px !important;
         width: 310px;
+        margin: 0;
+    }
+
+    .social-links {
+        height: 256px;
+        gap: 12px !important;
+    }
+}
+
+@media (max-width: 430px) {
+    .name {
+        font-size: 32px !important;
+        font-weight: 500;
+    }
+
+    .buttons {
+        gap: 30px !important;
+        width: 310px;
     }
 
     .social-links {

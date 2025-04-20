@@ -41,6 +41,7 @@
 
 .self-summary-section {
     display: flex;
+    align-items: center;
     flex-direction: column;
     width: 568px;
     height: 610px;
@@ -329,7 +330,10 @@
 
     .skill-set-description {
         width: 358px !important;
-        padding: 35px
+        padding-top: 35px !important;
+        padding-left: 35px !important;
+        padding-right: 35px !important;
+        padding-bottom: 20px !important;
     }
 
     .headline-skill-set {
