@@ -278,6 +278,7 @@
         justify-content: center;
     }
 }
+
 @media (max-width: 1920px) {
     .skills-section {
         gap: 183px !important;
@@ -324,7 +325,6 @@
 @media (max-width: 768px) {
     .self-summary-section {
         width: 390px !important;
-        // padding-top: 60px !important;
     }
 
     .skill-set-description {
@@ -349,10 +349,6 @@
 }
 
 @media (max-width: 600px) {
-    // .skills-section {
-    //     height: 1350px !important;
-    // }
-
     .icons {
         justify-content: center !important;
         gap: 45px !important;

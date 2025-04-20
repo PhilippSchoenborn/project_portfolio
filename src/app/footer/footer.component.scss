@@ -59,6 +59,7 @@
     a {
         text-decoration: none;
     }
+
     button,
     .legal-notice-link {
         display: flex;
@@ -128,6 +129,7 @@
     transform: rotate(180deg);
     cursor: pointer;
 }
+
 .scroll-arrow {
     position: relative;
     width: 2px;
@@ -135,6 +137,7 @@
     background-color: rgba(255, 255, 255, 1);
     margin-top: 0px;
     animation: arrowBounce 1s ease-in-out infinite;
+
     &::after {
         content: "";
         position: absolute;
@@ -147,11 +150,14 @@
         border-top: 2px solid rgba(255, 255, 255, 1);
     }
 }
+
 @keyframes arrowBounce {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(5px);
     }
