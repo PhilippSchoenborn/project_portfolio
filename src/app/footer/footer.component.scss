@@ -156,27 +156,7 @@
     }
 }
 
-@media (max-width: 9000px) {
-    .footer-section {
-        justify-content: space-around !important;
-    }
-}
-@media (max-width: 1920px) {
-    .footer-section {
-        justify-content: space-between !important;
-    }
-}
-
-@media (max-width: 1280px) {
-    .footer-section {
-        padding: 100px 16px 30px 16px;
-    }
-}
-
 @media (max-width: 650px) {
-    .footer-section {
-        padding: 50px 4px 30px 4px;
-    }
 
     .hidden-copyright {
         display: block;
