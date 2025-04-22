@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './data-protection.component.html',
   styleUrls: ['./data-protection.component.scss']
 })
-export class DataProtectionComponent implements AfterViewInit{
+export class DataProtectionComponent implements AfterViewInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
 
   translations = {
@@ -217,6 +217,10 @@ export class DataProtectionComponent implements AfterViewInit{
     public dialogRef: MatDialogRef<DataProtectionComponent>
   ) { }
 
+  /**
+   * Lifecycle hook that is called after the component's view has been initialized.
+   * It scrolls the page to the top element smoothly.
+   */
   ngAfterViewInit(): void {
     const element = document.getElementById('top');
     if (element) {
@@ -224,13 +228,20 @@ export class DataProtectionComponent implements AfterViewInit{
     }
   }
 
+  /**
+   * Lifecycle hook that is called after Angular has initialized all data-bound properties.
+   * Subscribes to the language service to update the selected language whenever it changes.
+   */
   ngOnInit(): void {
-    // Subscribe so we know when the user changes the language in Hero
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
   }
-  
+
+  /**
+   * Changes the language of the application.
+   * @param language The language to switch to ('EN' or 'DE')
+   */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
   }
