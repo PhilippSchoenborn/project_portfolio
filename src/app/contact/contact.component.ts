@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LanguageService } from '../language.service';
-import { DialogService } from '../shared/dialog.service'; // Import the DialogService
+import { DialogService } from '../shared/dialog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  // The critical part: make sure HttpClientModule is in the imports array.
   imports: [
     CommonModule,
     FormsModule,
@@ -19,9 +19,8 @@ import { DialogService } from '../shared/dialog.service'; // Import the DialogSe
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
-  // =============== Existing from your old code ===============
   selectedLanguage: 'EN' | 'DE' = 'EN';
-
+  private router = inject(Router);
   translations = {
     EN: {
       TITLE: 'Contact me',
@@ -69,20 +68,17 @@ export class ContactComponent {
     },
   };
 
-  // =============== New additions ===============
-  http = inject(HttpClient); // Angular's "inject" function
 
-  // For template-driven form fields
+  http = inject(HttpClient);
+
   contactData = {
     name: '',
     email: '',
     message: '',
   };
 
-  // For the privacy checkbox
   acceptTerms = false;
 
-  // Toggle: true = test mode (no real HTTP post), false = live
   mailTest = false;
   showSuccessPopup = false;
 
@@ -148,9 +144,9 @@ export class ContactComponent {
     }, 3000);
   }
 
-  // New method to open the Data Protection dialog via the DialogService
-  openDataProtection() {
-    this.dialogService.openDataProtection();
+  openDataProtection(event: MouseEvent): void {
+    event.preventDefault();
+    this.router.navigate(['/legal-notice']);
   }
 
 }

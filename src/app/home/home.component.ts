@@ -6,7 +6,7 @@ import { SkillsComponent }    from '../skills/skills.component';
 import { PortfolioComponent } from '../portfolio/portfolio.component';
 import { CommentsComponent }  from '../comments/comments.component';
 import { ContactComponent }   from '../contact/contact.component';
-import { FooterComponent }    from '../footer/footer.component';
+// import { FooterComponent }    from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,7 @@ import { FooterComponent }    from '../footer/footer.component';
     PortfolioComponent,
     CommentsComponent,
     ContactComponent,
-    FooterComponent
+    // FooterComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
