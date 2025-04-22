@@ -66,7 +66,7 @@ export class CommentsComponent {
     ];
   }
 
-  transition = 'transform 0.5s ease'; // du kannst es auch per SCSS machen
+  transition = 'transform 0.5s ease';
 
 getTransform(): string {
   return `translateX(-${this.currentIndex * 100}%)`;
