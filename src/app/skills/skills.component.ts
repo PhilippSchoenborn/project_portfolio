@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../language.service';
 
+/**
+ * Component representing the Skills section of the portfolio.
+ * It displays a set of skills and technologies the user is proficient in.
+ * The component also provides a way to change languages and interact with the background profile.
+ */
 @Component({
   selector: 'app-skills',
   standalone: true,
@@ -11,7 +16,6 @@ import { LanguageService } from '../language.service';
 })
 export class SkillsComponent {
   selectedLanguage: 'EN' | 'DE' = 'EN';
-
   translations = {
     EN: {
       TECHNOLOGIES: 'Technologies',
@@ -31,20 +35,34 @@ export class SkillsComponent {
     }
   };
 
+  /**
+   * Constructor that injects the `LanguageService` to allow language selection.
+   * @param languageService The service that handles language selection and updates.
+   */
   constructor(private languageService: LanguageService) { }
 
+  /**
+   * Initializes the component by subscribing to the `language$` observable from the `LanguageService`.
+   * This ensures the selected language is updated when the language is changed.
+   */
   ngOnInit(): void {
-    // Subscribe so we know when the user changes the language in Hero
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
   }
 
-  // This is optional if you have separate language buttons in About
+  /**
+   * Sets the language for the component by passing the selected language ('EN' or 'DE') to the `LanguageService`.
+   * @param language The language to be set, either 'EN' or 'DE'.
+   */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
   }
 
+  /**
+   * Makes the background profile visible by adding a 'visible' class to the profile background element.
+   * This can be used to control the visibility of the profile background through CSS.
+   */
   showBackground() {
     const bg = document.getElementById('profile-bg');
     if (bg) {
