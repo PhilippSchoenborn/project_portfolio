@@ -145,7 +145,7 @@ export class ContactComponent {
         )
         .subscribe({
           next: (response) => {
-            console.log('Response', response);
+            // console.log('Response', response);
             contactForm.resetForm();
             this.displaySuccessPopup();
           },
