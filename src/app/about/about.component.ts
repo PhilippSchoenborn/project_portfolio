@@ -42,20 +42,34 @@ export class AboutComponent implements OnInit {
     }
   };
 
-  constructor(private languageService: LanguageService) {}
+  /**
+   * Creates an instance of the AboutComponent.
+   * @param languageService The service used to manage the application's language setting
+   */
+  constructor(private languageService: LanguageService) { }
 
+  /**
+   * On component initialization, subscribe to language changes
+   * and update the selected language accordingly.
+   */
   ngOnInit(): void {
-    // Subscribe so we know when the user changes the language in Hero
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
   }
 
-  // This is optional if you have separate language buttons in About
+  /**
+   * Changes the application's language setting.
+   * This method can be used if language buttons are implemented in the About section.
+   * @param language The language to switch to ('EN' or 'DE')
+   */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
   }
 
+  /**
+   * Makes the background of the profile visible by adding a 'visible' class to the background element.
+   */
   showBackground() {
     const bg = document.getElementById('profile-bg');
     if (bg) {
