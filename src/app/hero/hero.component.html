@@ -3,10 +3,10 @@
     <p class="job">{{ translations[selectedLanguage].HERO_TITLE }}</p>
     <p class="name">Philipp Schönborn</p>
     <div class="buttons">
-      <a href="#projects" class="btn-primary">
+      <a (click)="navigate('projects')" class="btn-primary">
         <span>{{ translations[selectedLanguage].HERO_BTN1 }}</span>
       </a>
-      <a href="#contact" class="btn-secondary">
+      <a (click)="navigate('contact')" class="btn-secondary">
         <span>{{ translations[selectedLanguage].HERO_BTN2 }}</span>
       </a>
     </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="social-links">
       <div class="rotated-mail">
-        <a href="#contact">philipp&#64;schoenborn-home.de</a>
+        <a (click)="navigate('contact')">philipp&#64;schoenborn-home.de</a>
         <div class="icon-wrapper">
           <a href="#contact" class="mail-button">
             <img src="../../assets/img/icons/mail_icon_default.svg" alt="Email Icon" class="social-icon mail" />
