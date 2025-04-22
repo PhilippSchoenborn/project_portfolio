@@ -62,7 +62,7 @@
           <input type="checkbox" id="privacy" name="privacy" required #privacy="ngModel" [(ngModel)]="acceptTerms" />
           <label class="font-karla" for="privacy">
             {{ translations[selectedLanguage].PRIVACY_POLICY_1 }}
-            <a class="color" href="#" (click)="openDataProtection($event)">
+            <a class="color-link" href="#" (click)="openDataProtection($event)">
               {{ translations[selectedLanguage].PRIVACY_POLICY_COLOR }}
             </a>
             {{ translations[selectedLanguage].PRIVACY_POLICY_2 }}
