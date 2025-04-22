@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router'; // ✅ RouterModule hinzugefügt
 import { LanguageService } from '../language.service';
-import { Router } from '@angular/router';
 
 /**
  * HeaderComponent handles the header section of the application.
@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    RouterModule // ✅ RouterModule eingebunden, damit routerLink/fragment funktioniert
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -31,36 +34,23 @@ export class HeaderComponent implements OnInit {
     }
   };
 
-  /**
-   * Creates an instance of HeaderComponent.
-   * @param languageService The service responsible for language selection and switching.
-   * @param _eref The reference to the host element for detecting outside clicks.
-   */
   constructor(
     private languageService: LanguageService,
     private _eref: ElementRef,
     public router: Router
-  ) { }
+  ) {}
 
   hideNavElements(): boolean {
     const hiddenRoutes = ['/legal-notice'];
     return hiddenRoutes.includes(this.router.url);
   }
 
-  /**
-   * Lifecycle hook that is called when the component is initialized.
-   * Subscribes to the language service to update the selected language when it changes.
-   */
   ngOnInit(): void {
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
   }
 
-  /**
-   * Sets the selected language by calling the language service.
-   * @param language The language to set ('EN' or 'DE').
-   */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
     const currentUrl = this.router.url.split('?')[0];
@@ -68,27 +58,35 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl(newUrl);
   }
 
-  /**
-   * Toggles the state of the navigation menu (open or closed).
-   */
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
-  /**
-   * Closes the navigation menu when a link is clicked.
-   * @param link The link that was clicked (used for navigation but not implemented in this method).
-   */
-  navigate(link: string) {
-    this.router.navigate([], { fragment: link });
+  navigate(fragment: string) {
     this.menuOpen = false;
+  
+    // Wenn du bereits auf '/' bist, scroll nur
+    if (this.router.url.startsWith('/') && !this.router.url.includes('legal-notice')) {
+      setTimeout(() => {
+        const element = document.getElementById(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    } else {
+      // Andernfalls navigiere zur Startseite und scrolle danach
+      this.router.navigateByUrl('/', { skipLocationChange: false }).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(fragment);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 0);
+      });
+    }
   }
+  
 
-  /**
-   * HostListener for detecting clicks outside the menu.
-   * If the menu is open and a click occurs outside the header, the menu will be closed.
-   * @param event The click event.
-   */
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     if (this.menuOpen && !this._eref.nativeElement.contains(event.target)) {

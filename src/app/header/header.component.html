@@ -1,6 +1,7 @@
 <div class="background">
     <nav class="navbar" [ngClass]="{ 'menu-open': menuOpen }" id="navbar">
-        <div class="navbar-left-content">
+        <div class="navbar-left-content" *ngIf="!hideNavElements()">
+            <!-- Language Switch -->
             <div class="language-switch">
                 <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
                     (click)="setLanguage('EN')">
@@ -11,28 +12,46 @@
                     <span class="lang-text">DE</span>
                 </button>
             </div>
+
+            <!-- Navigation Links -->
             <ul class="nav-links" *ngIf="!hideNavElements()">
-                <li><a href="#about">{{ translations[selectedLanguage].NAV1 }}</a></li>
-                <li><a href="#projects">{{ translations[selectedLanguage].NAV2 }}</a></li>
-                <li><a href="#contact">{{ translations[selectedLanguage].NAV3 }}</a></li>
-              </ul>
+                <li>
+                    <a (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a>
+                </li>
+                <li>
+                    <a (click)="navigate('projects')">{{ translations[selectedLanguage].NAV2 }}</a>
+                </li>
+                <li>
+                    <a (click)="navigate('contact')">{{ translations[selectedLanguage].NAV3 }}</a>
+                </li>
+            </ul>
         </div>
 
+        <!-- Logo -->
         <div class="logo">Philipp<br />Schönborn</div>
 
+        <!-- Burger Menu Icon -->
         <div class="burger-menu" *ngIf="!hideNavElements()" (click)="toggleMenu()">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
-          </div>
+        </div>
 
+        <!-- Dropdown Burger Menu -->
         <div class="burger-dropdown" *ngIf="menuOpen">
             <ul>
-                <li><a href="#about" (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a></li>
-                <li><a href="#projects" (click)="navigate('projects')">{{ translations[selectedLanguage].NAV2 }}</a>
+                <li>
+                    <a (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a>
                 </li>
-                <li><a href="#contact" (click)="navigate('contact')">{{ translations[selectedLanguage].NAV3 }}</a></li>
+                <li>
+                    <a (click)="navigate('projects')">{{ translations[selectedLanguage].NAV2 }}</a>
+                </li>
+                <li>
+                    <a (click)="navigate('contact')">{{ translations[selectedLanguage].NAV3 }}</a>
+                </li>
             </ul>
+
+            <!-- Language Switch in Burger Menu -->
             <div class="language-switch">
                 <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
                     (click)="setLanguage('EN')">EN</button>

@@ -1,9 +1,9 @@
 <div class="button-legal-notice">
   <div class="buttons">
-    <button (click)="openDataProtection()" class="btn-primary">
+    <button (click)="openDataProtectionWithLanguage()" class="btn-primary">
       <span>{{ translations[selectedLanguage].LEGAL_BTN1 }}</span>
     </button>
-    <button (click)="openImprint()" class="btn-secondary">
+    <button (click)="openImprintWithLanguage()" class="btn-secondary">
       <span>{{ translations[selectedLanguage].LEGAL_BTN2 }}</span>
     </button>
   </div>
@@ -11,5 +11,4 @@
   <div class="back-arrow-container" (click)="goBackToPortfolio()">
     <div class="back-arrow"></div>
   </div>
-
 </div>
