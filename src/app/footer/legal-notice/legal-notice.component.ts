@@ -8,11 +8,8 @@ import { DataProtectionComponent } from './data-protection/data-protection.compo
 import { ImprintComponent } from './imprint/imprint.component';
 import { DialogService } from '../../shared/dialog.service';
 import { Subscription } from 'rxjs';
+import { LanguageService } from '../../language.service';
 
-/**
- * Component that handles legal notices, such as data protection and imprint.
- * It provides functionality to open dialogs for Data Protection and Imprint information.
- */
 @Component({
   selector: 'app-legal-notice',
   standalone: true,
@@ -27,63 +24,77 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./legal-notice.component.scss']
 })
 export class LegalNoticeComponent implements OnInit, OnDestroy {
+  selectedLanguage: 'EN' | 'DE' = 'EN';
 
-  /** Subscription for data protection trigger observable */
+  translations = {
+    EN: {
+      LEGAL_BTN1: 'Data Protection',
+      LEGAL_BTN2: 'Imprint',
+    },
+    DE: {
+      LEGAL_BTN1: 'Datenschutz',
+      LEGAL_BTN2: 'Impressum',
+    },
+  };
+
+  /**
+ * Subscription to the dialog trigger observable.
+ */
   private subscription!: Subscription;
 
   /**
-   * Constructor to initialize the component with necessary services.
-   * @param dialog The Angular Material Dialog service for handling modal dialogs.
-   * @param dialogService The DialogService to manage triggers for data protection and imprint dialogs.
+   * Constructor that injects services for dialogs and language handling.
+   * 
+   * @param dialog Angular Material dialog service for opening modals
+   * @param dialogService Custom service to trigger data protection modal
+   * @param languageService Custom service to track selected language
    */
-  constructor(private dialog: MatDialog, private dialogService: DialogService) { }
+  constructor(
+    private dialog: MatDialog,
+    private dialogService: DialogService,
+    private languageService: LanguageService
+  ) { }
 
   /**
-   * Lifecycle hook that is called when the component is initialized.
-   * Subscribes to the data protection trigger observable to open the Data Protection dialog when needed.
+   * Lifecycle hook that subscribes to the data protection trigger and language changes.
    */
-  ngOnInit() {
-    this.subscription = this.dialogService.dataProtectionTrigger$.subscribe(() => {
-      this.openDataProtection();
-    });
+  ngOnInit(): void {
+    this.subscription = this.dialogService.dataProtectionTrigger$.subscribe(() => this.openDataProtection());
+    this.languageService.language$.subscribe(lang => this.selectedLanguage = lang);
   }
 
   /**
-   * Lifecycle hook that is called when the component is destroyed.
-   * Unsubscribes from the data protection trigger observable to prevent memory leaks.
+   * Lifecycle hook to clean up the subscription.
    */
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * Opens the Data Protection dialog with full screen dimensions.
+   */
+  openDataProtection(): void {
+    const cfg = new MatDialogConfig();
+    cfg.width = '99vw';
+    cfg.height = '100vh';
+    cfg.autoFocus = false;
+    cfg.panelClass = 'custom-dialog';
+    if (!this.dialog.openDialogs.length) {
+      this.dialog.open(DataProtectionComponent, cfg);
     }
   }
 
   /**
-   * Opens the Data Protection dialog with custom configuration.
-   * This dialog is opened in full-screen mode with specific styling.
+   * Opens the Imprint dialog with standard dimensions.
    */
-  openDataProtection() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '99vw';
-    dialogConfig.height = '100vh';
-    dialogConfig.autoFocus = false;
-    dialogConfig.panelClass = 'custom-dialog';
+  openImprint(): void {
+    const cfg = new MatDialogConfig();
+    cfg.width = '600px';
+    cfg.height = '460px';
+    cfg.autoFocus = true;
+    cfg.panelClass = 'custom-dialog';
     if (!this.dialog.openDialogs.length) {
-      this.dialog.open(DataProtectionComponent, dialogConfig);
-    }
-  }
-
-  /**
-   * Opens the Imprint dialog with specific configuration for size and styling.
-   */
-  openImprint() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '600px';
-    dialogConfig.height = '460px';
-    dialogConfig.autoFocus = true;
-    dialogConfig.panelClass = 'custom-dialog';
-    if (!this.dialog.openDialogs.length) {
-      this.dialog.open(ImprintComponent, dialogConfig);
+      this.dialog.open(ImprintComponent, cfg);
     }
   }
 }

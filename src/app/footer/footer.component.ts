@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LanguageService } from '../language.service';
 
 /**
  * FooterComponent displays the footer section of the application.
@@ -14,6 +15,35 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  selectedLanguage: 'EN' | 'DE' = 'EN';
+  translations = {
+    EN: {
+      FOOTER_JOB: 'Web Developer',
+      FOOTER_COUNTRY: 'Germany',
+      FOOTER_LEGAL: 'Legal Notice',
+    },
+    DE: {
+      FOOTER_JOB: 'Webentwickler',
+      FOOTER_COUNTRY: 'Deutschland',
+      FOOTER_LEGAL: 'Impressum',
+    }
+  };
+
+  /**
+ * Creates an instance of HeroComponent.
+ * @param languageService The service that handles language selection and switching.
+ */
+  constructor(private languageService: LanguageService) { }
+
+  /**
+   * Lifecycle hook called when the component is initialized.
+   * Subscribes to the language service to update the selected language dynamically.
+   */
+  ngOnInit(): void {
+    this.languageService.language$.subscribe(lang => {
+      this.selectedLanguage = lang;
+    });
+  }
 
   /**
    * Scrolls the page smoothly to the navbar element when invoked.
