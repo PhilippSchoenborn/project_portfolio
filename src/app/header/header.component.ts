@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../language.service';
+import { Router } from '@angular/router';
 
 /**
  * HeaderComponent handles the header section of the application.
@@ -37,8 +38,14 @@ export class HeaderComponent implements OnInit {
    */
   constructor(
     private languageService: LanguageService,
-    private _eref: ElementRef
+    private _eref: ElementRef,
+    public router: Router
   ) { }
+
+  hideNavElements(): boolean {
+    const hiddenRoutes = ['/legal-notice'];
+    return hiddenRoutes.includes(this.router.url);
+  }
 
   /**
    * Lifecycle hook that is called when the component is initialized.

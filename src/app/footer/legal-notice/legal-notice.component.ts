@@ -9,7 +9,13 @@ import { ImprintComponent } from './imprint/imprint.component';
 import { DialogService } from '../../shared/dialog.service';
 import { Subscription } from 'rxjs';
 import { LanguageService } from '../../language.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
+/**
+ * The LegalNoticeComponent manages the legal notice section of the application.
+ * It allows users to open dialogs for Data Protection and Imprint,
+ * and provides a way to navigate back to the portfolio page while preserving the selected language.
+ */
 @Component({
   selector: 'app-legal-notice',
   standalone: true,
@@ -37,26 +43,27 @@ export class LegalNoticeComponent implements OnInit, OnDestroy {
     },
   };
 
-  /**
- * Subscription to the dialog trigger observable.
- */
   private subscription!: Subscription;
 
   /**
-   * Constructor that injects services for dialogs and language handling.
-   * 
-   * @param dialog Angular Material dialog service for opening modals
-   * @param dialogService Custom service to trigger data protection modal
-   * @param languageService Custom service to track selected language
+   * Creates an instance of LegalNoticeComponent.
+   * @param dialog The Angular Material dialog service used to open modals.
+   * @param dialogService A custom service to trigger the data protection modal.
+   * @param languageService A service that handles the language switching logic.
+   * @param router The Angular router to navigate programmatically.
+   * @param route The activated route service to access route parameters.
    */
   constructor(
     private dialog: MatDialog,
     private dialogService: DialogService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   /**
-   * Lifecycle hook that subscribes to the data protection trigger and language changes.
+   * Lifecycle hook that is called when the component is initialized.
+   * Subscribes to the data protection trigger and the language service to update the selected language.
    */
   ngOnInit(): void {
     this.subscription = this.dialogService.dataProtectionTrigger$.subscribe(() => this.openDataProtection());
@@ -64,14 +71,16 @@ export class LegalNoticeComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Lifecycle hook to clean up the subscription.
+   * Lifecycle hook that is called when the component is destroyed.
+   * Unsubscribes from the language and data protection subscriptions to avoid memory leaks.
    */
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
   /**
-   * Opens the Data Protection dialog with full screen dimensions.
+   * Opens the Data Protection dialog in full-screen mode.
+   * Configures the dialog dimensions and appearance before opening.
    */
   openDataProtection(): void {
     const cfg = new MatDialogConfig();
@@ -85,7 +94,8 @@ export class LegalNoticeComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens the Imprint dialog with standard dimensions.
+   * Opens the Imprint dialog with fixed width and height.
+   * Configures the dialog dimensions and appearance before opening.
    */
   openImprint(): void {
     const cfg = new MatDialogConfig();
@@ -96,5 +106,13 @@ export class LegalNoticeComponent implements OnInit, OnDestroy {
     if (!this.dialog.openDialogs.length) {
       this.dialog.open(ImprintComponent, cfg);
     }
+  }
+
+  /**
+   * Navigates back to the portfolio page while preserving the selected language.
+   * The language is passed as a query parameter in the route.
+   */
+  goBackToPortfolio(): void {
+    this.router.navigate(['/'], { queryParams: { lang: this.selectedLanguage } });
   }
 }

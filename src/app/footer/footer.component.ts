@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '../language.service';
+import { Router } from '@angular/router';
 
 /**
  * FooterComponent displays the footer section of the application.
@@ -33,7 +34,12 @@ export class FooterComponent {
  * Creates an instance of HeroComponent.
  * @param languageService The service that handles language selection and switching.
  */
-  constructor(private languageService: LanguageService) { }
+  constructor(private languageService: LanguageService, public router: Router) { }
+
+  hideFooterExtras(): boolean {
+    const hiddenRoutes = ['/legal-notice'];
+    return hiddenRoutes.includes(this.router.url);
+  }
 
   /**
    * Lifecycle hook called when the component is initialized.

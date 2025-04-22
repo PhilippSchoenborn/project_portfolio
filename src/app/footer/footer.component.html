@@ -11,18 +11,23 @@
             <span>&#169; Philipp Schönborn 2025</span>
         </div>
         <div class="social-links font-karla">
-            <div class="scroll-arrow-container" (click)="scrollToNavbar()">
+            <div class="scroll-arrow-container" *ngIf="!hideFooterExtras()" (click)="scrollToNavbar()">
                 <div class="scroll-arrow"></div>
-            </div>
+              </div>
             <a href="https://github.com/PhilippSchoenborn" target="_blank" rel="noopener">
                 <button type="button">GitHub</button>
             </a>
             <a href="https://www.linkedin.com/in/philipp-sch%C3%B6nborn-301511152/" target="_blank" rel="noopener">
                 <button type="button">LinkedIn</button>
             </a>
-            <a routerLink="/legal-notice" routerLinkActive="active" class="legal-notice-link font-karla">
-                {{ translations[selectedLanguage].FOOTER_LEGAL }}
-            </a>
+            <a
+            routerLink="/legal-notice"
+            routerLinkActive="active"
+            class="legal-notice-link font-karla"
+            *ngIf="!hideFooterExtras()"
+          >
+            {{ translations[selectedLanguage].FOOTER_LEGAL }}
+          </a>
         </div>
     </div>
     <div class="copyright font-fira hidden-copyright">

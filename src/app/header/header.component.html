@@ -11,20 +11,20 @@
                     <span class="lang-text">DE</span>
                 </button>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" *ngIf="!hideNavElements()">
                 <li><a href="#about">{{ translations[selectedLanguage].NAV1 }}</a></li>
                 <li><a href="#projects">{{ translations[selectedLanguage].NAV2 }}</a></li>
                 <li><a href="#contact">{{ translations[selectedLanguage].NAV3 }}</a></li>
-            </ul>
+              </ul>
         </div>
 
         <div class="logo">Philipp<br />Schönborn</div>
 
-        <div class="burger-menu" (click)="toggleMenu()">
+        <div class="burger-menu" *ngIf="!hideNavElements()" (click)="toggleMenu()">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
-        </div>
+          </div>
 
         <div class="burger-dropdown" *ngIf="menuOpen">
             <ul>
