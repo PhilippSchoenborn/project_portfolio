@@ -1,8 +1,8 @@
 <div class="background">
     <nav class="navbar" [ngClass]="{ 'menu-open': menuOpen }" id="navbar">
-        <div class="navbar-left-content" *ngIf="!hideNavElements()">
+        <div class="navbar-left-content">
             <!-- Language Switch -->
-            <div class="language-switch">
+            <div class="language-switch" *ngIf="!hideNavElements()">
                 <button class="lang-button" [ngClass]="{ 'active': selectedLanguage === 'EN' }"
                     (click)="setLanguage('EN')">
                     <span class="lang-text">EN</span>
@@ -14,7 +14,7 @@
             </div>
 
             <!-- Navigation Links -->
-            <ul class="nav-links" *ngIf="!hideNavElements()">
+            <ul class="nav-links">
                 <li>
                     <a (click)="navigate('about')">{{ translations[selectedLanguage].NAV1 }}</a>
                 </li>
@@ -31,7 +31,7 @@
         <div class="logo">Philipp<br />Schönborn</div>
 
         <!-- Burger Menu Icon -->
-        <div class="burger-menu" *ngIf="!hideNavElements()" (click)="toggleMenu()">
+        <div class="burger-menu"(click)="toggleMenu()">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
