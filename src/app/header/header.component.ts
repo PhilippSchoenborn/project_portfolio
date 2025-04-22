@@ -63,6 +63,9 @@ export class HeaderComponent implements OnInit {
    */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
+    const currentUrl = this.router.url.split('?')[0];
+    const newUrl = `/${language}${currentUrl}`;
+    this.router.navigateByUrl(newUrl);
   }
 
   /**
@@ -77,6 +80,7 @@ export class HeaderComponent implements OnInit {
    * @param link The link that was clicked (used for navigation but not implemented in this method).
    */
   navigate(link: string) {
+    this.router.navigate([], { fragment: link });
     this.menuOpen = false;
   }
 

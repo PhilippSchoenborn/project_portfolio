@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -46,7 +47,7 @@ export class AboutComponent implements OnInit {
    * Creates an instance of the AboutComponent.
    * @param languageService The service used to manage the application's language setting
    */
-  constructor(private languageService: LanguageService) { }
+  constructor(private languageService: LanguageService, public router: Router) { }
 
   /**
    * On component initialization, subscribe to language changes
@@ -65,6 +66,9 @@ export class AboutComponent implements OnInit {
    */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
+    const currentUrl = this.router.url.split('?')[0];
+    const newUrl = `/${language}${currentUrl}`;
+    this.router.navigateByUrl(newUrl);
   }
 
   /**

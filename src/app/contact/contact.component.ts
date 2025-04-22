@@ -124,6 +124,9 @@ export class ContactComponent {
    */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
+    const currentUrl = this.router.url.split('?')[0];
+    const newUrl = `/${language}${currentUrl}`;
+    this.router.navigateByUrl(newUrl);
   }
 
   /**

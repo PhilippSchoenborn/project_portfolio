@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 import { LanguageService } from '../../../language.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-protection',
@@ -214,7 +215,8 @@ export class DataProtectionComponent implements AfterViewInit {
 
   constructor(
     private languageService: LanguageService,
-    public dialogRef: MatDialogRef<DataProtectionComponent>
+    public dialogRef: MatDialogRef<DataProtectionComponent>,
+    public router: Router
   ) { }
 
   /**
@@ -244,5 +246,8 @@ export class DataProtectionComponent implements AfterViewInit {
    */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
+    const currentUrl = this.router.url.split('?')[0];
+    const newUrl = `/${language}${currentUrl}`;
+    this.router.navigateByUrl(newUrl);
   }
 }

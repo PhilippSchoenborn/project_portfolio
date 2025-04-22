@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../language.service';
+import { Router } from '@angular/router';
 
 /**
  * Component representing the Skills section of the portfolio.
@@ -39,7 +40,7 @@ export class SkillsComponent {
    * Constructor that injects the `LanguageService` to allow language selection.
    * @param languageService The service that handles language selection and updates.
    */
-  constructor(private languageService: LanguageService) { }
+  constructor(private languageService: LanguageService, public router: Router) { }
 
   /**
    * Initializes the component by subscribing to the `language$` observable from the `LanguageService`.
@@ -57,6 +58,9 @@ export class SkillsComponent {
    */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
+    const currentUrl = this.router.url.split('?')[0];
+    const newUrl = `/${language}${currentUrl}`;
+    this.router.navigateByUrl(newUrl);
   }
 
   /**
