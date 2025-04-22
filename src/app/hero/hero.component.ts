@@ -40,13 +40,23 @@ export class HeroComponent implements OnInit {
     }
   };
 
-  constructor(private languageService: LanguageService, private router: Router) {}
+/**
+ * The constructor injects the necessary services into the component.
+ * @param {LanguageService} languageService The language service used to manage language selection.
+ * @param {Router} router The Angular router used for navigation within the application.
+ */
+constructor(private languageService: LanguageService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.languageService.language$.subscribe(lang => {
-      this.selectedLanguage = lang;
-    });
-  }
+/**
+ * Lifecycle hook that is called when the component is initialized.
+ * It subscribes to the language service to update the selected language whenever the language changes.
+ */
+ngOnInit(): void {
+  this.languageService.language$.subscribe(lang => {
+    this.selectedLanguage = lang;
+  });
+}
+
 
   /**
    * Navigates and scrolls to a section by ID.
