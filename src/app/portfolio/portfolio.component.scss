@@ -51,7 +51,7 @@ h1 {
     border-top: 1px solid rgba(61, 207, 182, 1);
     padding: 40px 32px 40px 32px;
     position: relative;
-    flex: 1 0 auto; 
+    flex: 1 0 auto;
 
     &:hover {
         background-color: rgba(47, 91, 83);
@@ -93,7 +93,7 @@ h1 {
 .image-wrapper {
     width: 200px;
     flex-shrink: 0;
-  }
+}
 
 
 .projects-container img {
@@ -151,8 +151,8 @@ h1 {
     .image-wrapper {
         width: 150px;
         flex-shrink: 0;
-      }
-    
+    }
+
 }
 
 @media (max-width: 1024px) {
