@@ -179,7 +179,6 @@ export class ContactComponent {
    */
   openDataProtection(event: MouseEvent): void {
     event.preventDefault();
-    this.router.navigate(['/legal-notice']);
+    this.router.navigate(['/legal-notice/data-protection']);
   }
-
 }

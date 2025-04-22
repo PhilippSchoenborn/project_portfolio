@@ -1,13 +1,13 @@
 <div class="button-legal-notice">
   <div class="buttons">
-    <button (click)="openDataProtectionWithLanguage()" class="btn-primary">
+    <button class="btn-primary" [routerLink]="['/legal-notice/data-protection']">
       <span>{{ translations[selectedLanguage].LEGAL_BTN1 }}</span>
     </button>
-    <button (click)="openImprintWithLanguage()" class="btn-secondary">
+
+    <button class="btn-secondary" [routerLink]="['/legal-notice/imprint']" [queryParams]="{ lang: selectedLanguage }">
       <span>{{ translations[selectedLanguage].LEGAL_BTN2 }}</span>
     </button>
   </div>
-
   <div class="back-arrow-container" (click)="goBackToPortfolio()">
     <div class="back-arrow"></div>
   </div>

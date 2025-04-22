@@ -1,17 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { LanguageService } from '../../../language.service';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-protection',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    RouterModule       // ← only needed if you use [routerLink] in your template
+  ],
   templateUrl: './data-protection.component.html',
   styleUrls: ['./data-protection.component.scss']
 })
-export class DataProtectionComponent implements AfterViewInit {
+export class DataProtectionComponent implements AfterViewInit, OnInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
 
   translations = {
@@ -215,39 +217,49 @@ export class DataProtectionComponent implements AfterViewInit {
 
   constructor(
     private languageService: LanguageService,
-    public dialogRef: MatDialogRef<DataProtectionComponent>,
-    public router: Router
+    private router: Router,              // ← for back navigation
+    private route: ActivatedRoute
   ) { }
 
-  /**
-   * Lifecycle hook that is called after the component's view has been initialized.
-   * It scrolls the page to the top element smoothly.
-   */
-  ngAfterViewInit(): void {
-    const element = document.getElementById('top');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  /**
-   * Lifecycle hook that is called after Angular has initialized all data-bound properties.
-   * Subscribes to the language service to update the selected language whenever it changes.
-   */
   ngOnInit(): void {
+    // pick up `?lang=` on the URL (if you want)
+    this.route.queryParams.subscribe(params => {
+      const lang = params['lang'];
+      if (lang === 'EN' || lang === 'DE') {
+        this.selectedLanguage = lang;
+        this.languageService.setLanguage(lang);
+      }
+    });
+
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
   }
 
+  ngAfterViewInit(): void {
+    const top = document.getElementById('top');
+    if (top) {
+      top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   /**
-   * Changes the language of the application.
-   * @param language The language to switch to ('EN' or 'DE')
+   * Navigates back to the legal notice page with the selected language as a query parameter.
    */
-  setLanguage(language: 'EN' | 'DE') {
+  goBackToLegalNotice(): void {
+    this.router.navigate(
+      ['/legal-notice'],
+      { queryParams: { lang: this.selectedLanguage } }
+    );
+  }
+
+  setLanguage(language: 'EN' | 'DE'): void {
     this.languageService.setLanguage(language);
-    const currentUrl = this.router.url.split('?')[0];
-    const newUrl = `/${language}${currentUrl}`;
-    this.router.navigateByUrl(newUrl);
+    // update URL so that if you refresh, you stay in the same language
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { lang: language },
+      replaceUrl: true,
+    });
   }
 }

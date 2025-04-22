@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../../language.service';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-imprint',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './imprint.component.html',
   styleUrls: ['./imprint.component.scss']
 })
@@ -27,7 +28,7 @@ export class ImprintComponent implements OnInit {
       block3: `
         <p>
           Phone: +49 (0) 176 306 785 30<br>
-          Email:
+          E-Mail:
           <a href="mailto:philipp@schoenborn-home.de">
             philipp&#64;schoenborn-home.de
           </a>
@@ -35,12 +36,12 @@ export class ImprintComponent implements OnInit {
       `,
       heading4: 'Editorially Responsible',
       block4: `
-        <p>
+               <p>
           Philipp Schönborn<br>
           Baumschulenring 26<br>
           72202 Nagold
         </p>
-        <p>
+       <p>
           Cenk Korkmaz<br>
           Kleinhöchbergerstraße 45<br>
           71560 Sulzbach an der Murr
@@ -70,6 +71,7 @@ export class ImprintComponent implements OnInit {
       heading3: 'Kontakt',
       block3: `
         <p>
+        <p>
           Telefon: +49 (0) 176 306 785 30<br>
           E-Mail:
           <a href="mailto:philipp@schoenborn-home.de">
@@ -79,12 +81,12 @@ export class ImprintComponent implements OnInit {
       `,
       heading4: 'Redaktionell verantwortlich',
       block4: `
-        <p>
+              <p>
           Philipp Schönborn<br>
           Baumschulenring 26<br>
           72202 Nagold
         </p>
-        <p>
+       <p>
           Cenk Korkmaz<br>
           Kleinhöchbergerstraße 45<br>
           71560 Sulzbach an der Murr
@@ -104,16 +106,21 @@ export class ImprintComponent implements OnInit {
   };
 
   constructor(
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private router: Router,
+    private route: ActivatedRoute,   // ← if you later want to read/merge params
   ) { }
 
-  /**
-   * Lifecycle hook that is called after Angular has initialized all data-bound properties.
-   * Subscribes to the language service to update the selected language whenever it changes.
-   */
   ngOnInit(): void {
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
+  }
+
+  goBackToLegalNotice(): void {
+    this.router.navigate(
+      ['/legal-notice'],
+      { queryParams: { lang: this.selectedLanguage } }
+    );
   }
 }

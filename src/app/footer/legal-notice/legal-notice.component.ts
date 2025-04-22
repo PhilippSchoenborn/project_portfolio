@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +12,7 @@ import { Subscription } from 'rxjs';
 import { LanguageService } from '../../language.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 /**
  * LegalNoticeComponent handles the display of legal notices, such as data protection and imprint.
  * It uses Angular Material dialogs for displaying the legal information in a modal format.
@@ -20,6 +22,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -57,7 +60,7 @@ export class LegalNoticeComponent implements OnInit, OnDestroy {
     private languageService: LanguageService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   /**
    * Lifecycle hook that is called when the component is initialized.
