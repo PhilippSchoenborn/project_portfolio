@@ -68,20 +68,26 @@ export class ContactComponent {
     },
   };
 
-
+  /** Injected HttpClient for making requests */
   http = inject(HttpClient);
 
+  /** Model for contact form input */
   contactData = {
     name: '',
     email: '',
     message: '',
   };
 
+  /** Whether the privacy policy is accepted */
   acceptTerms = false;
 
+  /** Test mode toggle (e.g. prevents real mail submission) */
   mailTest = false;
+
+  /** Controls display of success popup */
   showSuccessPopup = false;
 
+  /** Request configuration for sending form data */
   post = {
     endPoint: 'https://philipp-schoenborn.de/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
@@ -93,21 +99,39 @@ export class ContactComponent {
     },
   };
 
+  /**
+   * Creates an instance of ContactComponent.
+   * @param languageService Service for managing current language
+   * @param dialogService Service for showing dialogs (not used in current code)
+   */
   constructor(
     private languageService: LanguageService,
     private dialogService: DialogService
-  ) {}
+  ) { }
 
+  /**
+   * Initializes the component, subscribing to language changes.
+   */
   ngOnInit(): void {
     this.languageService.language$.subscribe((lang) => {
       this.selectedLanguage = lang;
     });
   }
 
+  /**
+   * Updates the currently selected language.
+   * @param language Language to set ('EN' or 'DE')
+   */
   setLanguage(language: 'EN' | 'DE') {
     this.languageService.setLanguage(language);
   }
 
+  /**
+   * Handles contact form submission.
+   * Sends data if form is valid and not in test mode.
+   * Displays success popup and resets form.
+   * @param contactForm The Angular NgForm instance
+   */
   onSubmit(contactForm: NgForm) {
     if (contactForm.submitted && contactForm.form.valid && !this.mailTest) {
       this.http
@@ -128,15 +152,17 @@ export class ContactComponent {
           complete: () => console.info('send post complete'),
         });
     } else if (contactForm.submitted && contactForm.form.valid && this.mailTest) {
-      console.log('mailTest=true. Skipping request. Resetting form...');
+      // console.log('mailTest=true. Skipping request. Resetting form...');
       contactForm.resetForm();
       this.displaySuccessPopup();
     } else {
-      console.log('Form is invalid or not yet submitted');
+      // console.log('Form is invalid or not yet submitted');
     }
   }
 
-
+  /**
+   * Displays a temporary success popup for 3 seconds.
+   */
   displaySuccessPopup() {
     this.showSuccessPopup = true;
     setTimeout(() => {
@@ -144,6 +170,10 @@ export class ContactComponent {
     }, 3000);
   }
 
+  /**
+   * Navigates to the legal notice/data protection page.
+   * @param event MouseEvent from the link click
+   */
   openDataProtection(event: MouseEvent): void {
     event.preventDefault();
     this.router.navigate(['/legal-notice']);
