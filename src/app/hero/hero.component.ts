@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../language.service';
 
+/**
+ * HeroComponent represents the hero section of the webpage, featuring the title, navigation, and call-to-action buttons.
+ * It handles the dynamic language switching and displays a set of predefined translations for each supported language.
+ */
 @Component({
   selector: 'app-hero',
   standalone: true,
@@ -11,7 +15,6 @@ import { LanguageService } from '../language.service';
 })
 export class HeroComponent implements OnInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
-
   translations = {
     EN: {
       NAV1: 'About',
@@ -39,8 +42,16 @@ export class HeroComponent implements OnInit {
     }
   };
 
+  /**
+   * Creates an instance of HeroComponent.
+   * @param languageService The service that handles language selection and switching.
+   */
   constructor(private languageService: LanguageService) { }
 
+  /**
+   * Lifecycle hook called when the component is initialized.
+   * Subscribes to the language service to update the selected language dynamically.
+   */
   ngOnInit(): void {
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;

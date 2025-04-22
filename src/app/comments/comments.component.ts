@@ -46,19 +46,31 @@ export class CommentsComponent {
   currentIndex: number = 0;
   selectedLanguage: 'EN' | 'DE' = 'EN';
 
+  /**
+   * Creates an instance of the CommentsComponent.
+   * @param languageService Service to manage language preferences
+   */
   constructor(private languageService: LanguageService) { }
 
+  /**
+   * On component initialization, subscribe to the language service to update the 
+   * currently selected language whenever it changes.
+   */
   ngOnInit(): void {
     this.languageService.language$.subscribe((lang) => {
       this.selectedLanguage = lang;
     });
   }
 
+  /**
+   * Returns an array of testimonials for the current, previous, and next slide,
+   * creating a circular slide effect.
+   * @returns Array of 3 testimonials for the current, previous, and next slides
+   */
   get circularSlides(): Testimonial[] {
     const length = this.testimonials.length;
     const prevIndex = (this.currentIndex - 1 + length) % length;
     const nextIndex = (this.currentIndex + 1) % length;
-
     return [
       this.testimonials[prevIndex],
       this.testimonials[this.currentIndex],
@@ -66,20 +78,38 @@ export class CommentsComponent {
     ];
   }
 
+  /** CSS transition property for smooth slide transition */
   transition = 'transform 0.5s ease';
 
-getTransform(): string {
-  return `translateX(-${this.currentIndex * 100}%)`;
-}
+  /**
+   * Calculates and returns the transform style string to slide the testimonials 
+   * based on the current index.
+   * @returns CSS translateX style value for the current testimonial
+   */
+  getTransform(): string {
+    return `translateX(-${this.currentIndex * 100}%)`;
+  }
 
+  /**
+   * Moves to the next testimonial slide.
+   * Loops back to the first slide when the end of the list is reached.
+   */
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
   }
 
+  /**
+   * Moves to the previous testimonial slide.
+   * Loops back to the last slide when the beginning of the list is reached.
+   */
   prevSlide(): void {
     this.currentIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
   }
 
+  /**
+   * Directly navigates to a specific testimonial slide by index.
+   * @param index The index of the testimonial to navigate to
+   */
   goToSlide(index: number): void {
     this.currentIndex = index;
   }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { LanguageService } from '../../../language.service'; // Adjust path as needed
+import { LanguageService } from '../../../language.service';
 
 @Component({
   selector: 'app-imprint',
@@ -103,10 +103,15 @@ export class ImprintComponent implements OnInit {
     },
   };
 
-  constructor(private languageService: LanguageService) {}
+  constructor(
+    private languageService: LanguageService
+  ) { }
 
+  /**
+   * Lifecycle hook that is called after Angular has initialized all data-bound properties.
+   * Subscribes to the language service to update the selected language whenever it changes.
+   */
   ngOnInit(): void {
-    // Subscribe so we know when the user changes the language
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
     });
