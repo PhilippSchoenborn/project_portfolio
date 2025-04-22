@@ -337,6 +337,45 @@ h2 {
     color: #ff4b4b !important;
 }
 
+.form-container input,
+.form-container textarea {
+  padding: 10px;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: rgb(28, 28, 28);
+  color: #00ffcc;
+  font-size: 18px;
+  line-height: normal;
+  border: none;
+  outline: none;
+  transition: background-color 0s ease-in-out 0s;
+}
+
+.form-container input:-webkit-autofill,
+.form-container textarea:-webkit-autofill,
+.form-container input:-webkit-autofill:focus,
+.form-container textarea:-webkit-autofill:focus,
+.form-container input:-webkit-autofill:hover,
+.form-container textarea:-webkit-autofill:hover {
+  -webkit-box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
+  box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
+  -webkit-text-fill-color: #00ffcc !important;
+  font-size: 18px !important;
+  line-height: normal !important;
+  border: none !important;
+  transition: background-color 0s ease-in-out 0s;
+}
+
+.form-container input:-moz-autofill,
+.form-container textarea:-moz-autofill {
+  box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
+  -moz-text-fill-color: #00ffcc !important;
+  font-size: 18px !important;
+  line-height: normal !important;
+  border: none !important;
+}
+
+
 @media (max-width: 1280px) {
     .contact {
         gap: 80px;
