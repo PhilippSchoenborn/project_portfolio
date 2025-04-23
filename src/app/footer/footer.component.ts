@@ -21,7 +21,7 @@ export class FooterComponent {
     EN: {
       FOOTER_JOB: 'Web Developer',
       FOOTER_COUNTRY: 'Germany',
-      FOOTER_LEGAL: 'Legal Notice',
+      FOOTER_LEGAL: 'Imprint',
     },
     DE: {
       FOOTER_JOB: 'Webentwickler',

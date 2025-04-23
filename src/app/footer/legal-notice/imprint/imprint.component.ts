@@ -119,7 +119,7 @@ export class ImprintComponent implements OnInit {
 
   goBackToLegalNotice(): void {
     this.router.navigate(
-      ['/legal-notice'],
+      ['/'],
       { queryParams: { lang: this.selectedLanguage } }
     );
   }

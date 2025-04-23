@@ -248,7 +248,7 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
    */
   goBackToLegalNotice(): void {
     this.router.navigate(
-      ['/legal-notice'],
+      ['/'],
       { queryParams: { lang: this.selectedLanguage } }
     );
   }
