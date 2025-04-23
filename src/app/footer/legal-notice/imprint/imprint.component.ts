@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LanguageService } from '../../../language.service';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 
@@ -12,6 +12,15 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 })
 export class ImprintComponent implements OnInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
+
+  cursorX = 0;
+  cursorY = 0;
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    this.cursorX = event.clientX;
+    this.cursorY = event.clientY;
+  }
 
   translations = {
     EN: {

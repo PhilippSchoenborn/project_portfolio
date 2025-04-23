@@ -36,6 +36,10 @@
     line-height: normal;
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.3s;
+    padding: 10px;
+    height: 40px;
+    box-sizing: border-box;
+    background-color: rgb(28, 28, 28);
 }
 
 .form-container input:focus,
@@ -50,24 +54,8 @@
     border-top: 1px solid rgba(61, 207, 182, 0.5);
     border-bottom: 1px solid rgba(61, 207, 182, 0.5);
     padding: 16px 0;
-    gap: 10px;
-
-    span {
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 28.8px;
-        margin: 0;
-    }
-}
-
-.error-message {
-    margin-top: 5px;
-}
-
-.error-text {
-    color: #ff4b4b !important;
-    font-size: 16px !important;
-    font-family: 'Karla', sans-serif;
+    gap: 8px;
+    position: relative;
 }
 
 .single-input-frame label {
@@ -76,10 +64,34 @@
     align-items: center;
 }
 
-.single-input-frame .error-text {
-    color: #ff4b4b;
-    font-size: 16px;
-    margin-left: 12px;
+.error-text {
+    visibility: hidden;
+    opacity: 0;
+    min-height: 20px;
+    transition: opacity 0.3s ease-in-out;
+    color: #ff4b4b !important;
+    font-size: 16px !important;
+    font-family: 'Karla', sans-serif;
+    margin-top: 2px;
+}
+
+.error-text.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.privacy-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.privacy-content .error-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
 }
 
 .checkbox-area {
@@ -96,11 +108,6 @@
         display: flex;
         justify-content: center;
     }
-
-    /* Entfernt – nicht mehr nötig */
-    // label {
-    //   pointer-events: none;
-    // }
 
     a {
         pointer-events: auto;
@@ -152,7 +159,6 @@
     transition: border 0.3s;
 }
 
-/* Neue Bedingung: Nur wenn NICHT über den Link gehovert wird */
 .checkbox-container label:hover:not(:has(a:hover))::before {
     background: rgba(0, 255, 204, 0.2);
     border-radius: 50%;
@@ -191,11 +197,6 @@
     overflow: hidden;
     position: relative;
     width: 172px;
-}
-
-.btn-primary:hover {
-    border-color: rgba(61, 207, 182, 1);
-    color: rgba(61, 207, 182, 1);
 }
 
 .btn-disabled {
@@ -339,16 +340,16 @@ h2 {
 
 .form-container input,
 .form-container textarea {
-  padding: 10px;
-  height: 40px;
-  box-sizing: border-box;
-  background-color: rgb(28, 28, 28);
-  color: #00ffcc;
-  font-size: 18px;
-  line-height: normal;
-  border: none;
-  outline: none;
-  transition: background-color 0s ease-in-out 0s;
+    padding: 10px;
+    height: 40px;
+    box-sizing: border-box;
+    background-color: rgb(28, 28, 28);
+    color: #00ffcc;
+    font-size: 18px;
+    line-height: normal;
+    border: none;
+    outline: none;
+    transition: background-color 0s ease-in-out 0s;
 }
 
 .form-container input:-webkit-autofill,
@@ -357,22 +358,22 @@ h2 {
 .form-container textarea:-webkit-autofill:focus,
 .form-container input:-webkit-autofill:hover,
 .form-container textarea:-webkit-autofill:hover {
-  -webkit-box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
-  box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
-  -webkit-text-fill-color: #00ffcc !important;
-  font-size: 18px !important;
-  line-height: normal !important;
-  border: none !important;
-  transition: background-color 0s ease-in-out 0s;
+    -webkit-box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
+    box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
+    -webkit-text-fill-color: #00ffcc !important;
+    font-size: 18px !important;
+    line-height: normal !important;
+    border: none !important;
+    transition: background-color 0s ease-in-out 0s;
 }
 
 .form-container input:-moz-autofill,
 .form-container textarea:-moz-autofill {
-  box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
-  -moz-text-fill-color: #00ffcc !important;
-  font-size: 18px !important;
-  line-height: normal !important;
-  border: none !important;
+    box-shadow: inset 0 0 0 1000px rgb(28, 28, 28) !important;
+    -moz-text-fill-color: #00ffcc !important;
+    font-size: 18px !important;
+    line-height: normal !important;
+    border: none !important;
 }
 
 

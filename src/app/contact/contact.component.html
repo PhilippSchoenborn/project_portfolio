@@ -10,7 +10,7 @@
     </span>
   </div>
 
-  <!-- pop-up send mail successfully -->
+  <!-- Pop-up send mail successfully -->
   <div class="success-popup" *ngIf="showSuccessPopup">
     {{ translations[selectedLanguage].MAIL_SUCCESS }}
   </div>
@@ -21,38 +21,41 @@
     <div class="single-input-frame">
       <label for="name" class="font-fira">
         {{ translations[selectedLanguage].FORM_NAME }}
-        <small class="error-text" *ngIf="name.invalid && name.dirty && name.value">
-          {{ translations[selectedLanguage].FORM_NAME_ERROR }}
-        </small>
       </label>
       <input #name="ngModel" class="font-karla" type="text" id="name" name="name" [(ngModel)]="contactData.name"
         placeholder="{{ translations[selectedLanguage].FORM_NAME_PLACEHOLDER }}" minlength="2" required />
+
+      <small class="error-text" [class.visible]="name.invalid && name.touched">
+        {{ translations[selectedLanguage].FORM_NAME_ERROR }}
+      </small>
     </div>
 
     <!-- EMAIL FIELD -->
     <div class="single-input-frame">
       <label for="email" class="font-fira">
         {{ translations[selectedLanguage].FORM_MAIL }}
-        <small class="error-text" *ngIf="email.invalid && email.dirty && email.value">
-          {{ translations[selectedLanguage].FORM_EMAIL_ERROR }}
-        </small>
       </label>
       <input #email="ngModel" class="font-karla" type="email" id="email" name="email" [(ngModel)]="contactData.email"
         placeholder="{{ translations[selectedLanguage].FORM_EMAIL_PLACEHOLDER }}" required
         pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+
+      <small class="error-text" [class.visible]="email.invalid && email.touched">
+        {{ translations[selectedLanguage].FORM_EMAIL_ERROR }}
+      </small>
     </div>
 
     <!-- MESSAGE FIELD -->
     <div class="single-input-frame">
       <label for="message" class="font-fira">
         {{ translations[selectedLanguage].FORM_QUESTION }}
-        <small class="error-text" *ngIf="message.invalid && message.dirty && message.value">
-          {{ translations[selectedLanguage].FORM_MESSAGE_ERROR }}
-        </small>
       </label>
       <textarea #message="ngModel" class="font-karla" style="resize: none" id="message" name="message"
         [(ngModel)]="contactData.message" placeholder="{{ translations[selectedLanguage].FORM_QUESTION_PLACEHOLDER }}"
         minlength="15" required></textarea>
+
+      <small class="error-text" [class.visible]="message.invalid && message.touched">
+        {{ translations[selectedLanguage].FORM_MESSAGE_ERROR }}
+      </small>
     </div>
 
     <!-- CHECKBOX AREA (PRIVACY) -->
@@ -69,9 +72,9 @@
           </label>
         </div>
 
-        <!-- Privacy Error -->
-        <div class="error-message" *ngIf="privacy.invalid && privacy.dirty">
-          <small class="error-text">
+        <!-- ✅ Show only if touched and invalid -->
+        <div class="error-message">
+          <small class="error-text" [class.visible]="privacy.touched && privacy.invalid">
             {{ translations[selectedLanguage].PRIVACY_ERROR }}
           </small>
         </div>

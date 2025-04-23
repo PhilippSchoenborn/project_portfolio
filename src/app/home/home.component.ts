@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from '../hero/hero.component';
 import { AboutComponent } from '../about/about.component';
@@ -30,4 +30,12 @@ import { ContactComponent } from '../contact/contact.component';
 export class HomeComponent {
   title = 'portfolio';
   selectedLanguage: 'en' | 'de' = 'en';
+  cursorX = 0;
+  cursorY = 0;
+  
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    this.cursorX = event.clientX;
+    this.cursorY = event.clientY;
+  }
 }

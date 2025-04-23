@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, HostListener} from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { LanguageService } from '../../../language.service';
 
@@ -15,6 +15,14 @@ import { LanguageService } from '../../../language.service';
 })
 export class DataProtectionComponent implements AfterViewInit, OnInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
+  cursorX = 0;
+  cursorY = 0;
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    this.cursorX = event.clientX;
+    this.cursorY = event.clientY;
+  }
 
   translations = {
     EN: {
