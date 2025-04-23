@@ -26,6 +26,12 @@ export class AppComponent {
   cursorX = 0;
   cursorY = 0;
 
+  /**
+   * Event listener for mouse movement on the document.
+   * Updates the cursor's X and Y position properties with the current
+   * mouse coordinates relative to the viewport.
+   * @param event - The MouseEvent containing the cursor's current position.
+   */
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     this.cursorX = event.clientX;

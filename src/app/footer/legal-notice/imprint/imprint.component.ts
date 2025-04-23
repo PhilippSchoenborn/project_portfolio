@@ -16,6 +16,12 @@ export class ImprintComponent implements OnInit {
   cursorX = 0;
   cursorY = 0;
 
+  /**
+   * Event listener for mouse movement on the document.
+   * Updates the cursor's X and Y position properties with the current
+   * mouse coordinates relative to the viewport.
+   * @param event - The MouseEvent containing the cursor's current position.
+   */
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     this.cursorX = event.clientX;
@@ -114,12 +120,22 @@ export class ImprintComponent implements OnInit {
     },
   };
 
+  /**
+   * Constructs the DataProtectionComponent and injects required services.
+   * @param languageService - Service for managing the application's selected language.
+   * @param router - Angular Router for navigating between routes.
+   * @param route - Provides access to information about a route associated with a component.
+   */
   constructor(
     private languageService: LanguageService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
 
+  /**
+   * Angular lifecycle hook that is called after the component's data-bound properties are initialized.
+   * Subscribes to the current language observable to update the component’s language state dynamically.
+   */
   ngOnInit(): void {
     this.languageService.language$.subscribe(lang => {
       this.selectedLanguage = lang;
@@ -127,7 +143,8 @@ export class ImprintComponent implements OnInit {
   }
 
   /**
-   * Navigates back to the main page with the selected language as a query parameter.
+   * Navigates back to the main (root) page while preserving the currently selected language
+   * as a query parameter in the URL.
    */
   goBackToMainPage(): void {
     this.router.navigate(

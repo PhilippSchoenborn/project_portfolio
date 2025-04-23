@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, OnInit, HostListener} from '@angular/core';
+import { Component, AfterViewInit, OnInit, HostListener } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { LanguageService } from '../../../language.service';
 
@@ -8,16 +8,22 @@ import { LanguageService } from '../../../language.service';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule       // ← only needed if you use [routerLink] in your template
+    RouterModule
   ],
   templateUrl: './data-protection.component.html',
   styleUrls: ['./data-protection.component.scss']
 })
+
 export class DataProtectionComponent implements AfterViewInit, OnInit {
   selectedLanguage: 'EN' | 'DE' = 'EN';
   cursorX = 0;
   cursorY = 0;
 
+  /**
+   * Listens for mouse movement events on the entire document.
+   * Updates the cursorX and cursorY properties with the current position of the mouse.
+   * @param event The MouseEvent object containing cursor position data.
+   */
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     this.cursorX = event.clientX;
@@ -229,6 +235,10 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
     private route: ActivatedRoute
   ) { }
 
+  /**
+   * Initializes the component by subscribing to query parameters and language service updates.
+   * If the query parameter 'lang' is valid ('EN' or 'DE'), it sets and updates the language accordingly.
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const lang = params['lang'];
@@ -243,6 +253,10 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
     });
   }
 
+  /**
+   * After the view is initialized, this method scrolls smoothly to the element with the ID 'top'.
+   * Useful when needing to programmatically scroll to a known anchor point after navigation.
+   */
   ngAfterViewInit(): void {
     const top = document.getElementById('top');
     if (top) {
@@ -251,7 +265,8 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
   }
 
   /**
-   * Navigates back to the main page with the selected language as a query parameter.
+   * Navigates to the root path ('/') while preserving the currently selected language
+   * as a query parameter in the URL.
    */
   goBackToMainPage(): void {
     this.router.navigate(
@@ -260,6 +275,11 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
     );
   }
 
+  /**
+   * Sets a new language, updates the language service, and replaces the current URL state
+   * with the new query parameter (without adding a new history entry).
+   * @param language The language code to set ('EN' or 'DE').
+   */
   setLanguage(language: 'EN' | 'DE'): void {
     this.languageService.setLanguage(language);
     this.router.navigate([], {
@@ -268,4 +288,5 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
       replaceUrl: true,
     });
   }
+
 }
