@@ -142,6 +142,22 @@ export class ImprintComponent implements OnInit {
     });
   }
 
+    /**
+   * After the view is initialized, this method scrolls smoothly to the element with the ID 'top'.
+   * Useful when needing to programmatically scroll to a known anchor point after navigation.
+   */
+    ngAfterViewInit(): void {
+      const top = document.getElementById('top');
+      if (top) {
+        const elementPosition = top.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 98;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
   /**
    * Navigates back to the main (root) page while preserving the currently selected language
    * as a query parameter in the URL.
