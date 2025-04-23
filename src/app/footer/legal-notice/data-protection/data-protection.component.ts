@@ -260,7 +260,12 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     const top = document.getElementById('top');
     if (top) {
-      top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const elementPosition = top.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - 98;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   }
 

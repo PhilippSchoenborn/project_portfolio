@@ -1,11 +1,3 @@
-.data-protection {
-    background-color: rgb(28, 28, 28);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .cursor-overlay {
     position: fixed;
     pointer-events: none;
@@ -17,7 +9,15 @@
     z-index: 1;
     opacity: 0.2;
     filter: blur(4px);
-  }
+}
+
+.data-protection {
+    background-color: rgb(28, 28, 28);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .data-protection-content {
     padding: 20px;
