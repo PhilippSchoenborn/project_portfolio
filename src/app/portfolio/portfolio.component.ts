@@ -68,7 +68,7 @@ export class PortfolioComponent {
         DE: 'Ein Aufgabenmanager, inspiriert vom Kanban-System. Erstellen und organisieren Sie Aufgaben mit Drag-and-Drop-Funktionen, weisen Sie Benutzer und Kategorien zu.',
       },
       technologies: ['CSS', 'HTML', 'Firebase', 'Angular', 'TypeScript'],
-      githubLink: 'https://github.com/PhilippSchoenborn/project_join',
+      githubLink: 'https://github.com/BorisScheiber/join-294',
       liveLink: 'https://philipp-schoenborn.de/join',
       imageUrl: 'assets/img/pop-ups/join_pop_up.svg',
       modalImageUrl: 'assets/img/pop-ups/modal_join.svg',
