@@ -225,12 +225,11 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
 
   constructor(
     private languageService: LanguageService,
-    private router: Router,              // ← for back navigation
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    // pick up `?lang=` on the URL (if you want)
     this.route.queryParams.subscribe(params => {
       const lang = params['lang'];
       if (lang === 'EN' || lang === 'DE') {
@@ -252,9 +251,9 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
   }
 
   /**
-   * Navigates back to the legal notice page with the selected language as a query parameter.
+   * Navigates back to the main page with the selected language as a query parameter.
    */
-  goBackToLegalNotice(): void {
+  goBackToMainPage(): void {
     this.router.navigate(
       ['/'],
       { queryParams: { lang: this.selectedLanguage } }
@@ -263,7 +262,6 @@ export class DataProtectionComponent implements AfterViewInit, OnInit {
 
   setLanguage(language: 'EN' | 'DE'): void {
     this.languageService.setLanguage(language);
-    // update URL so that if you refresh, you stay in the same language
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { lang: language },

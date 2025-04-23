@@ -117,7 +117,7 @@ export class ImprintComponent implements OnInit {
   constructor(
     private languageService: LanguageService,
     private router: Router,
-    private route: ActivatedRoute,   // ← if you later want to read/merge params
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -126,7 +126,10 @@ export class ImprintComponent implements OnInit {
     });
   }
 
-  goBackToLegalNotice(): void {
+  /**
+   * Navigates back to the main page with the selected language as a query parameter.
+   */
+  goBackToMainPage(): void {
     this.router.navigate(
       ['/'],
       { queryParams: { lang: this.selectedLanguage } }
